@@ -138,6 +138,7 @@ GameObject:
   - component: {fileID: 223754416}
   - component: {fileID: 223754419}
   - component: {fileID: 223754418}
+  - component: {fileID: 223754420}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -242,6 +243,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
   condition: {fileID: 0}
+  itemData: {fileID: 0}
 --- !u!114 &223754418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -318,6 +320,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiCondition: {fileID: 0}
   noHungerHealthDecay: 0
+--- !u!114 &223754420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223754412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d4d95539267ff346aafc24064ebb571, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkRate: 0.05
+  maxCheckDistance: 1
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  curInteractGameObject: {fileID: 0}
+  promptText: {fileID: 1652806550}
 --- !u!1 &327769103
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,6 +432,7 @@ GameObject:
   m_Component:
   - component: {fileID: 402754570}
   - component: {fileID: 402754569}
+  - component: {fileID: 402754571}
   m_Layer: 7
   m_Name: JustBox
   m_TagString: Untagged
@@ -455,6 +477,19 @@ Transform:
   - {fileID: 327769107}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &402754571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 402754568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07611bf04be4b0c46803a1af5d948944, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: da8178be3ea5f0d4185dd08984afafe1, type: 2}
 --- !u!1 &491504816
 GameObject:
   m_ObjectHideFlags: 0
