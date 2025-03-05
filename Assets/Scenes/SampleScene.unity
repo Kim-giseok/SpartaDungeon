@@ -132,10 +132,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 223754413}
-  - component: {fileID: 223754417}
-  - component: {fileID: 223754416}
   - component: {fileID: 223754415}
   - component: {fileID: 223754414}
+  - component: {fileID: 223754417}
+  - component: {fileID: 223754416}
+  - component: {fileID: 223754419}
   - component: {fileID: 223754418}
   m_Layer: 6
   m_Name: Player
@@ -240,6 +241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
+  condition: {fileID: 0}
 --- !u!114 &223754418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,6 +304,20 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &223754419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223754412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c07e79155cc79640b619fbe0a8a2f6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiCondition: {fileID: 531733308}
+  noHungerHealthDecay: 0
 --- !u!1 &491504816
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,6 +411,7 @@ GameObject:
   m_Component:
   - component: {fileID: 531733306}
   - component: {fileID: 531733307}
+  - component: {fileID: 531733308}
   m_Layer: 0
   m_Name: Conditions
   m_TagString: Untagged
@@ -448,6 +465,19 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &531733308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531733305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9486a34f23159f478c3edbb5a96e9c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 1762846282}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -858,6 +888,7 @@ GameObject:
   - component: {fileID: 1762846279}
   - component: {fileID: 1762846281}
   - component: {fileID: 1762846280}
+  - component: {fileID: 1762846282}
   m_Layer: 0
   m_Name: Health
   m_TagString: Untagged
@@ -924,6 +955,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1762846278}
   m_CullTransparentMesh: 1
+--- !u!114 &1762846282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762846278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8a263086ca13e647b98eb66e8296aab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curValue: 0
+  maxValue: 100
+  startValue: 100
+  passiveValue: 0
+  uiBar: {fileID: 1310454637}
 --- !u!1 &1830042187
 GameObject:
   m_ObjectHideFlags: 0
