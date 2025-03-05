@@ -46,9 +46,8 @@ public class ItemObject : MonoBehaviour, IInteractable
     {
         for (int i = 0; i < coroutines.Length; i++)
         {
-            if (coroutines[i] != null)
-                StopCoroutine(coroutines[i]);
-            coroutines[i] = StartCoroutine(ApplyBuf(0));
+            if (coroutines[i] == null)
+                coroutines[i] = StartCoroutine(ApplyBuf(0));
         }
     }
 
@@ -71,5 +70,6 @@ public class ItemObject : MonoBehaviour, IInteractable
             yield return new WaitForSeconds(data.consumables[idx].bufTime);
             action?.Invoke(-data.consumables[idx].value);
         }
+        coroutines[idx] = null;
     }
 }
