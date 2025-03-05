@@ -24,6 +24,10 @@ public class PlayerController : MonoBehaviour
         Move();
     }
 
+    /// <summary>
+    /// 키보드 입력에 따라 이동방향을 결정합니다.
+    /// </summary>
+    /// <param name="context"></param>
     public void OnMoveInput(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Performed)
@@ -36,6 +40,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 점프키 입력 시 지면에 닿아있으면 위로 뛰어오릅니다.
+    /// </summary>
+    /// <param name="context"></param>
     public void OnJumpInput(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Started && IsGrounded())
@@ -44,6 +52,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 지정된 방향으로 이동합니다.
+    /// </summary>
     private void Move()
     {
         Vector3 dir = transform.forward * curMovementInput.y + transform.right * curMovementInput.x;
@@ -53,6 +64,10 @@ public class PlayerController : MonoBehaviour
         rigi.velocity = dir;
     }
 
+    /// <summary>
+    /// 지면에 닿아있는지 확인합니다.
+    /// </summary>
+    /// <returns>지면에 닿아있으면 true, 그렇지 않으면 false를 반환합니다.</returns>
     bool IsGrounded()
     {
         Ray[] rays = new Ray[4]

@@ -50,12 +50,19 @@ public class Interaction : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 아이템의 정보를 표시합니다.
+    /// </summary>
     private void SetPromptText()
     {
         promptText.gameObject.SetActive(true);
         promptText.text = curInteractable.GetInteractPrompt();
     }
 
+    /// <summary>
+    /// 상호작용 키를 누르면 보고있는 아이템과 상호작용합니다.
+    /// </summary>
+    /// <param name="context"></param>
     public void OnInteractInput(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Started && curInteractable != null)

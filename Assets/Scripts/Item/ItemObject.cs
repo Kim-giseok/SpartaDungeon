@@ -21,6 +21,9 @@ public class ItemObject : MonoBehaviour, IInteractable
         return str;
     }
 
+    /// <summary>
+    /// 아이템의 상호작용입니다. 타입에 따라 다르게 동작합니다.
+    /// </summary>
     public void OnInteract()
     {
         switch (data.type)

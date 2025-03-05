@@ -23,6 +23,10 @@ public class ItemDataConsumable
     public bool isTimlimit;
     public float bufTime;
 
+    /// <summary>
+    /// 아이템의 버프내용을 적용합니다. 중복적용을 위해서 여기에 선언해두었습니다.
+    /// </summary>
+    /// <returns></returns>
     public IEnumerator ApplyBuf()
     {
         Action<float> action = null;

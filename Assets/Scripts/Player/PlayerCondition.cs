@@ -59,6 +59,10 @@ public class PlayerCondition : MonoBehaviour, IDamagable
         CharacterManager.Instance.Player.controller.moveSpeed += speedAmount;
     }
 
+    /// <summary>
+    /// 아이템의 버프수치들을 적용합니다. 아이템은 사용 후 사라지기 때문에 코루틴 유지를 위해 여기서 호출합니다.
+    /// </summary>
+    /// <param name="data">아이템이 가지고 있는 정보입니다.</param>
     public void ApplyBuf(ItemData data)
     {
         foreach (var consumable in data.consumables)
