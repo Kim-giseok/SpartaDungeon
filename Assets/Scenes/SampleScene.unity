@@ -134,14 +134,14 @@ GameObject:
   - component: {fileID: 223754413}
   - component: {fileID: 223754415}
   - component: {fileID: 223754414}
+  - component: {fileID: 223754418}
   - component: {fileID: 223754417}
   - component: {fileID: 223754416}
   - component: {fileID: 223754419}
-  - component: {fileID: 223754418}
   - component: {fileID: 223754420}
   m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -756,8 +756,9 @@ GameObject:
   - component: {fileID: 774816621}
   - component: {fileID: 774816620}
   - component: {fileID: 774816622}
+  - component: {fileID: 774816623}
   m_Layer: 0
-  m_Name: JumpFlattform
+  m_Name: JumpFlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -827,6 +828,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &774816623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774816619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a31d48512a906746b6be20e91123892, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpPower: 160
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
