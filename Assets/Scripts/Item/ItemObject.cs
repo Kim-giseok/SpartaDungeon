@@ -37,9 +37,9 @@ public class ItemObject : MonoBehaviour, IInteractable
 
     void ItemConsume()
     {
-        for (int i = 0; i < data.consumables.Length; i++)
+        foreach (var consumable in data.consumables)
         {
-            StartCoroutine(data.consumables[i].ApplyBuf(0));
+            StartCoroutine(consumable.ApplyBuf());
         }
     }
 }

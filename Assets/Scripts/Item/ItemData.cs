@@ -23,7 +23,7 @@ public class ItemDataConsumable
     public bool isTimlimit;
     public float bufTime;
 
-    public IEnumerator ApplyBuf(int idx)
+    public IEnumerator ApplyBuf()
     {
         Action<float> action = null;
         switch (type)
