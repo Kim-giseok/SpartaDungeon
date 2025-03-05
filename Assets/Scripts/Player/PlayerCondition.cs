@@ -58,4 +58,12 @@ public class PlayerCondition : MonoBehaviour, IDamagable
     {
         CharacterManager.Instance.Player.controller.moveSpeed += speedAmount;
     }
+
+    public void ApplyBuf(ItemData data)
+    {
+        foreach (var consumable in data.consumables)
+        {
+            StartCoroutine(consumable.ApplyBuf());
+        }
+    }
 }

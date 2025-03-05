@@ -28,18 +28,11 @@ public class ItemObject : MonoBehaviour, IInteractable
             case ItemType.RESOURCE:
                 return;
             case ItemType.CONSUMABLE:
-                ItemConsume();
+                CharacterManager.Instance.Player.condition.ApplyBuf(data);
                 break;
             case ItemType.EQUIPABLE:
                 break;
         }
-    }
-
-    void ItemConsume()
-    {
-        foreach (var consumable in data.consumables)
-        {
-            StartCoroutine(consumable.ApplyBuf());
-        }
+        Destroy(gameObject);
     }
 }
