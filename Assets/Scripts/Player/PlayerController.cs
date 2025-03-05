@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnJumpInput(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Performed && IsGrounded())
+        if (context.phase == InputActionPhase.Started && IsGrounded())
         {
             rigi.AddForce(Vector2.up * jumpPower, ForceMode.Impulse);
         }
