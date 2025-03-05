@@ -2,15 +2,15 @@ using UnityEngine;
 
 public enum ItemType
 {
-    Resource,
-    Equipable,
-    Consumable
+    RESOURCE,
+    EQUIPABLE,
+    CONSUMABLE
 }
 
 public enum ConsumableType
 {
-    Hunger,
-    Health
+    HEALTH,
+    SPEED
 }
 
 [System.Serializable]
@@ -18,6 +18,8 @@ public class ItemDataConsumable
 {
     public ConsumableType type;
     public float value;
+    public bool isTimlimit;
+    public float bufTime;
 }
 
 [CreateAssetMenu(fileName = "Item", menuName = "New Item")]
@@ -29,4 +31,7 @@ public class ItemData : ScriptableObject
     public ItemType type;
     public Sprite icon;
     public GameObject dropPrefab;
+
+    [Header("Consumable")]
+    public ItemDataConsumable[] consumables;
 }

@@ -49,4 +49,13 @@ public class PlayerCondition : MonoBehaviour, IDamagable
         health.Subtract(damageAmount);
         onTakeDamage?.Invoke();
     }
+
+    /// <summary>
+    /// 플레이어의 스피드를 변화시킵니다.
+    /// </summary>
+    /// <param name="speedAmount">변화시킬 수치입니다. 양수면 증가, 음수면 감소합니다.</param>
+    public void ChangeSpeed(float speedAmount)
+    {
+        CharacterManager.Instance.Player.controller.moveSpeed += speedAmount;
+    }
 }

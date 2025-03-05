@@ -17,3 +17,8 @@ MonoBehaviour:
   type: 2
   icon: {fileID: 0}
   dropPrefab: {fileID: 0}
+  consumables:
+  - type: 1
+    value: 5
+    isTimlimit: 1
+    bufTime: 5
