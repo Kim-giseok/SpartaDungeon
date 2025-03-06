@@ -2,9 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JumpFlatform : MonoBehaviour
+public class JumpFlatform : MonoBehaviour, IInteractable
 {
     public float jumpPower;
+
+    public string GetInteractPrompt()
+    {
+        return "Á¡ÇÁ´ë\n¹âÀ¸¸é À§·Î ¶Ù¾î¿À¸¨´Ï´Ù.";
+    }
+
+    public void OnInteract()
+    {
+    }
 
     void OnCollisionStay(Collision collision)
     {

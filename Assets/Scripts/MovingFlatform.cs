@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovingFlatform : MonoBehaviour
+public class MovingFlatform : MonoBehaviour, IInteractable
 {
     [Header("Move Info")]
     public float distance; //전진할 거리입니다. 해당 거리만큼 전진한 후, 다시 돌아옵니다.
@@ -36,5 +36,14 @@ public class MovingFlatform : MonoBehaviour
     {
         if (collision.gameObject == player.gameObject)
             player.transform.parent = null;
+    }
+
+    public string GetInteractPrompt()
+    {
+        return "이동발판\n위에 올라타면 옮겨줍니다.";
+    }
+
+    public void OnInteract()
+    {
     }
 }

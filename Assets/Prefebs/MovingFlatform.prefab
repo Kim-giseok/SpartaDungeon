@@ -93,7 +93,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2129231339763162497}
   - component: {fileID: 4944223878311634928}
-  - component: {fileID: 996814509822634989}
   - component: {fileID: 4870380396539250127}
   m_Layer: 7
   m_Name: MovingFlatform
@@ -139,19 +138,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2, y: 0.3, z: 2}
   m_Center: {x: 0, y: 0.15, z: 0}
---- !u!114 &996814509822634989
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8083101573742483303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07611bf04be4b0c46803a1af5d948944, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 273d8566a3e65fa4db791c2e927fdb3d, type: 2}
 --- !u!114 &4870380396539250127
 MonoBehaviour:
   m_ObjectHideFlags: 0

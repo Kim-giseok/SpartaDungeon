@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6459890400335532297}
   - component: {fileID: 6956696710509363583}
   - component: {fileID: 4099403716013830969}
-  - component: {fileID: 8245899389872027397}
   m_Layer: 7
   m_Name: JumpFlatform
   m_TagString: Untagged
@@ -69,19 +68,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpPower: 240
---- !u!114 &8245899389872027397
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2549764572536167096}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07611bf04be4b0c46803a1af5d948944, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 1dc12bb4856d4ba49802a8aaf9c61acc, type: 2}
 --- !u!1 &7682572536050741013
 GameObject:
   m_ObjectHideFlags: 0
