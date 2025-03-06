@@ -12,7 +12,8 @@ public enum ItemType
 public enum ConsumableType
 {
     HEALTH,
-    SPEED
+    SPEED,
+    DJUMP
 }
 
 [System.Serializable]
