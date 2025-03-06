@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f00d8081334bc543896cce6e7b77a4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flyPower: 400
+  flyPower: 200
   returnTime: 0
 --- !u!1 &7682572536050741013
 GameObject:

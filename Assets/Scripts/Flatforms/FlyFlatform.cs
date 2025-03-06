@@ -17,11 +17,12 @@ public class FlyFlatform : MonoBehaviour, IInteractable
 
     public string GetInteractPrompt()
     {
-        return "발사대\n[E]키로 발사";
+        return flyReady ? "발사대\n[E]키로 발사" : "발사된 발사대\n잠시 후 원래자리로 돌아갑니다.";
     }
 
     public void OnInteract()
     {
+        if (!flyReady) return;
         rigi.isKinematic = false;
         flyReady = false;
         rigi.AddForce(transform.up * flyPower, ForceMode.Impulse);
