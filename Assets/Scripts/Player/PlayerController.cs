@@ -89,7 +89,7 @@ public class PlayerController : MonoBehaviour
             if (IsGrounded())
                 rigi.AddForce(Vector2.up * jumpPower, ForceMode.Impulse);
             else if (IsWall())
-                rigi.AddForce(transform.forward * -jumpPower * 10f, ForceMode.Impulse);
+                rigi.AddForce(transform.forward * -jumpPower, ForceMode.Impulse);
         }
     }
 
@@ -98,27 +98,30 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void Move()
     {
-        bool isWall = IsWall();
-        rigi.useGravity = !isWall;
+        float totalSpeed = CharacterManager.Instance.Player.condition.isRun ? moveSpeed + runSpeed : moveSpeed;
 
         Vector3 dir;
-        if (isWall)
+        if (IsWall())
+        {
+            rigi.useGravity = false;
             dir = transform.up * curMovementInput.y + transform.right * curMovementInput.x;
-        else
-            dir = transform.forward * curMovementInput.y + transform.right * curMovementInput.x;
-
-        float totalSpeed = moveSpeed;
-        if (CharacterManager.Instance.Player.condition.isRun)
-            totalSpeed += runSpeed;
-        dir = dir.normalized;
-        dir *= totalSpeed;
-
-        if (isWall)
+            dir = dir.normalized * totalSpeed;
             dir += transform.forward;
+
+            rigi.velocity = dir;
+        }
         else
+        {
+            rigi.useGravity = true;
+            dir = transform.forward * curMovementInput.y + transform.right * curMovementInput.x;
+            dir = dir.normalized * totalSpeed;
             dir.y = rigi.velocity.y;
 
-        rigi.velocity = dir;
+            if (IsGrounded())
+                rigi.velocity = dir;
+            else
+                rigi.AddForce(dir - rigi.velocity, ForceMode.Acceleration);
+        }
     }
 
     /// <summary>
