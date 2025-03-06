@@ -17,8 +17,11 @@ public class PlayerCondition : MonoBehaviour, IDamagable
 
     Condition health => uiCondition.health;
     Condition stamina => uiCondition.stamina;
-    public bool isRun => CharacterManager.Instance.Player.controller.isRun && !grogy;
+    public bool IsRun => CharacterManager.Instance.Player.controller.isRun && !grogy;
     bool grogy = false;
+
+    int dJumpCount; //더블점프 가능 횟수
+    public bool DJumpable => dJumpCount >= 1;
 
     public event Action onTakeDamage; // Damage 받을 때 호출할 Action
 
@@ -29,7 +32,7 @@ public class PlayerCondition : MonoBehaviour, IDamagable
         if (stamina.curValue >= stamina.maxValue)
             grogy = false;
             
-        if (isRun)
+        if (IsRun)
             stamina.Subtract(stamina.passiveValue * Time.deltaTime);
         else
             stamina.Add(stamina.passiveValue * Time.deltaTime);
@@ -78,5 +81,10 @@ public class PlayerCondition : MonoBehaviour, IDamagable
         {
             StartCoroutine(consumable.ApplyBuf());
         }
+    }
+
+    public void ChangeDJumpCount(float djumpCount)
+    {
+        dJumpCount += (int)djumpCount;
     }
 }

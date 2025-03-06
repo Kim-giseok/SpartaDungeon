@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public float runSpeed; // 달리기 상태일 때 가산할 속도
     private Vector2 curMovementInput; // 현재 입력 값
     public float jumpPower;
+    bool dJump = false; // 더블점프 준비
     public LayerMask groundLayerMask; // 레이어 정보
 
     [Header("Look")]
@@ -87,8 +88,18 @@ public class PlayerController : MonoBehaviour
         if (context.phase == InputActionPhase.Started)
         {
             if (IsGrounded())
+            {
                 rigi.AddForce(Vector2.up * jumpPower, ForceMode.Impulse);
-            else if (IsWall())
+                dJump = true;
+            }
+            else if(dJump && CharacterManager.Instance.Player.condition.DJumpable)
+            {
+                CharacterManager.Instance.Player.condition.ChangeDJumpCount(-1);
+                rigi.AddForce(Vector2.up * jumpPower, ForceMode.Impulse);
+                dJump = false;
+            }
+
+            if (IsWall())
                 rigi.AddForce(transform.forward * -jumpPower, ForceMode.Impulse);
         }
     }
@@ -98,7 +109,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void Move()
     {
-        float totalSpeed = CharacterManager.Instance.Player.condition.isRun ? moveSpeed + runSpeed : moveSpeed;
+        float totalSpeed = CharacterManager.Instance.Player.condition.IsRun ? moveSpeed + runSpeed : moveSpeed;
 
         Vector3 dir;
         if (IsWall())

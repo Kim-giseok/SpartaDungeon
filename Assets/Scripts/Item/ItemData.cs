@@ -39,6 +39,9 @@ public class ItemDataConsumable
             case ConsumableType.SPEED:
                 action = CharacterManager.Instance.Player.condition.ChangeSpeed;
                 break;
+            case ConsumableType.DJUMP:
+                action = CharacterManager.Instance.Player.condition.ChangeDJumpCount;
+                break;
         }
         action?.Invoke(value);
 
