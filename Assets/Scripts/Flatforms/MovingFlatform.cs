@@ -22,7 +22,7 @@ public class MovingFlatform : MonoBehaviour, IInteractable
     // Update is called once per frame
     void Update()
     {
-        float movement = Mathf.PingPong(speed*Time.time, distance);
+        float movement = Mathf.PingPong(speed * Time.time, distance);
         transform.position = startP + direction * movement;
     }
 
@@ -34,7 +34,7 @@ public class MovingFlatform : MonoBehaviour, IInteractable
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject == player.gameObject)
+        if (player != null && collision.gameObject == player.gameObject)
             player.transform.parent = null;
     }
 
