@@ -94,5 +94,4 @@ public class PlayerCondition : MonoBehaviour, IDamagable
             StartCoroutine(consumable.ApplyBuf(this));
         }
     }
-
 }

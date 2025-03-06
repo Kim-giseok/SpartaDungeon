@@ -92,7 +92,7 @@ public class PlayerController : MonoBehaviour
                 rigi.AddForce(Vector2.up * jumpPower, ForceMode.Impulse);
                 dJump = true;
             }
-            else if(dJump && CharacterManager.Instance.Player.condition.DJumpable)
+            else if (dJump && CharacterManager.Instance.Player.condition.DJumpable)
             {
                 CharacterManager.Instance.Player.condition.ChangeDJumpCount(-1);
                 rigi.AddForce(Vector2.up * jumpPower, ForceMode.Impulse);

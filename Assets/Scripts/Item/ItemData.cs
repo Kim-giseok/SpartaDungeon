@@ -55,7 +55,6 @@ public class ItemDataConsumable
             action?.Invoke(-value);
         }
     }
-
 }
 
 [CreateAssetMenu(fileName = "Item", menuName = "New Item")]
