@@ -50,6 +50,7 @@ public class PlayerController : MonoBehaviour
         {
             CameraLook();
         }
+        Debug.DrawRay(transform.position + transform.up * 0.5f, transform.forward * 0.3f, Color.red);
     }
 
     /// <summary>
@@ -94,13 +95,22 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void Move()
     {
-        Vector3 dir = transform.forward * curMovementInput.y + transform.right * curMovementInput.x;
+        bool isWall = IsWall();
+        rigi.useGravity = !isWall;
+
+        Vector3 dir;
+        if (isWall)
+            dir = transform.up * curMovementInput.y + transform.right * curMovementInput.x;
+        else
+            dir = transform.forward * curMovementInput.y + transform.right * curMovementInput.x;
 
         float totalSpeed = moveSpeed;
         if (CharacterManager.Instance.Player.condition.isRun)
             totalSpeed += runSpeed;
         dir *= totalSpeed;
-        dir.y = rigi.velocity.y;
+
+        if (!isWall)
+            dir.y = rigi.velocity.y;
 
         rigi.velocity = dir;
     }
@@ -112,9 +122,17 @@ public class PlayerController : MonoBehaviour
     {
         camCurXRot += mouseDelta.y * lookSensitivity;
         camCurXRot = Mathf.Clamp(camCurXRot, minXLook, maxXLook);
-        cameraContainer.localEulerAngles = new Vector3(-camCurXRot, 0, 0);
 
-        transform.eulerAngles += new Vector3(0, mouseDelta.x * lookSensitivity, 0);
+        if (IsWall())
+        {
+            //벽에 붙어있다면 플레이어는 회전하지 않습니다.
+            cameraContainer.localEulerAngles = new Vector3(-camCurXRot, cameraContainer.localEulerAngles.y + mouseDelta.x * lookSensitivity, 0);
+        }
+        else
+        {
+            cameraContainer.localEulerAngles = new Vector3(-camCurXRot, 0, 0);
+            transform.eulerAngles += new Vector3(0, mouseDelta.x * lookSensitivity, 0);
+        }
     }
 
     /// <summary>
@@ -152,5 +170,15 @@ public class PlayerController : MonoBehaviour
             isRun = true;
         if (context.phase == InputActionPhase.Canceled)
             isRun = false;
+    }
+
+    /// <summary>
+    /// 벽에 붙었는지 확인합니다.
+    /// </summary>
+    bool IsWall()
+    {
+        Ray ray = new Ray(transform.position + transform.up * 0.5f, transform.forward);
+
+        return Physics.Raycast(ray, 0.3f, groundLayerMask);
     }
 }
