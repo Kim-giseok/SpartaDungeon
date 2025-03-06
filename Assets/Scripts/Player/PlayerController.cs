@@ -8,11 +8,14 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Movement")]
     public float moveSpeed;
+    public float runSpeed; // 달리기 상태일 때 가산할 속도
     private Vector2 curMovementInput; // 현재 입력 값
     public float jumpPower;
     public LayerMask groundLayerMask; // 레이어 정보
 
     private Rigidbody rigi;
+
+    public bool isRun;
 
     private void Awake()
     {
@@ -58,7 +61,7 @@ public class PlayerController : MonoBehaviour
     private void Move()
     {
         Vector3 dir = transform.forward * curMovementInput.y + transform.right * curMovementInput.x;
-        dir *= moveSpeed;
+        dir *= moveSpeed + (isRun ? runSpeed : 0);
         dir.y = rigi.velocity.y;
 
         rigi.velocity = dir;
@@ -87,5 +90,13 @@ public class PlayerController : MonoBehaviour
         }
 
         return false;
+    }
+
+    public void OnRunInput(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+            isRun = true;
+        if (context.phase == InputActionPhase.Canceled)
+            isRun = false;  
     }
 }
