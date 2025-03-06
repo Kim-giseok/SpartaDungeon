@@ -16,6 +16,8 @@ public class PlayerCondition : MonoBehaviour, IDamagable
     public UICondition uiCondition;
 
     Condition health => uiCondition.health;
+    int invincible;
+
     Condition stamina => uiCondition.stamina;
     public bool IsRun => CharacterManager.Instance.Player.controller.isRun && !grogy;
     bool grogy = false;
@@ -31,15 +33,14 @@ public class PlayerCondition : MonoBehaviour, IDamagable
             grogy = true;
         if (stamina.curValue >= stamina.maxValue)
             grogy = false;
-            
+
         if (IsRun)
             stamina.Subtract(stamina.passiveValue * Time.deltaTime);
         else
             stamina.Add(stamina.passiveValue * Time.deltaTime);
+
         if (health.curValue <= 0f)
-        {
             Die();
-        }
     }
 
     public void Heal(float amount)
@@ -58,6 +59,7 @@ public class PlayerCondition : MonoBehaviour, IDamagable
     /// <param name="damageAmount"></param>
     public void TakePhysicalDamage(int damageAmount)
     {
+        if (invincible > 0) return;
         health.Subtract(damageAmount);
         onTakeDamage?.Invoke();
     }
@@ -71,6 +73,16 @@ public class PlayerCondition : MonoBehaviour, IDamagable
         CharacterManager.Instance.Player.controller.moveSpeed += speedAmount;
     }
 
+    public void ChangeDJumpCount(float djumpCount)
+    {
+        dJumpCount += (int)djumpCount;
+    }
+
+    public void ChangeInvincible(float invin)
+    {
+        invincible += (int)invin;
+    }
+
     /// <summary>
     /// 아이템의 버프수치들을 적용합니다. 아이템은 사용 후 사라지기 때문에 코루틴 유지를 위해 여기서 호출합니다.
     /// </summary>
@@ -79,12 +91,8 @@ public class PlayerCondition : MonoBehaviour, IDamagable
     {
         foreach (var consumable in data.consumables)
         {
-            StartCoroutine(consumable.ApplyBuf());
+            StartCoroutine(consumable.ApplyBuf(this));
         }
     }
 
-    public void ChangeDJumpCount(float djumpCount)
-    {
-        dJumpCount += (int)djumpCount;
-    }
 }

@@ -29,19 +29,22 @@ public class ItemDataConsumable
     /// 아이템의 버프내용을 적용합니다. 중복적용을 위해서 여기에 선언해두었습니다.
     /// </summary>
     /// <returns></returns>
-    public IEnumerator ApplyBuf()
+    public IEnumerator ApplyBuf(PlayerCondition condition)
     {
         Action<float> action = null;
         switch (type)
         {
             case ConsumableType.HEALTH:
-                action = CharacterManager.Instance.Player.condition.Heal;
+                action = condition.Heal;
                 break;
             case ConsumableType.SPEED:
-                action = CharacterManager.Instance.Player.condition.ChangeSpeed;
+                action = condition.ChangeSpeed;
                 break;
             case ConsumableType.DJUMP:
-                action = CharacterManager.Instance.Player.condition.ChangeDJumpCount;
+                action = condition.ChangeDJumpCount;
+                break;
+            case ConsumableType.INVINCIBLE:
+                action = condition.ChangeInvincible;
                 break;
         }
         action?.Invoke(value);
