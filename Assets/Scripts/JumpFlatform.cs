@@ -8,7 +8,7 @@ public class JumpFlatform : MonoBehaviour
 
     void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player") && collision.gameObject.transform.position.y > transform.position.y)
+        if (collision.gameObject.CompareTag("Player") && collision.gameObject.transform.position.y - transform.position.y > 0.2f)
         {
             var rigi = collision.gameObject.GetComponent<Rigidbody>();
             rigi.velocity = new Vector3(rigi.velocity.x,0,rigi.velocity.z);

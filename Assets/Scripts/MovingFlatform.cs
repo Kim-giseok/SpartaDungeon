@@ -28,7 +28,7 @@ public class MovingFlatform : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.TryGetComponent<Player>(out player) && collision.gameObject.transform.position.y > transform.position.y)
+        if (collision.gameObject.TryGetComponent<Player>(out player) && collision.gameObject.transform.position.y - transform.position.y > 0.2f)
             player.transform.parent = transform;
     }
 
