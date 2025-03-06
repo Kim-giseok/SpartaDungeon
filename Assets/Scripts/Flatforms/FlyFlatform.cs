@@ -41,7 +41,6 @@ public class FlyFlatform : MonoBehaviour, IInteractable
     {
         if (!flyReady && Time.time - flyStartTime >= returnTime)
         {
-            rigi.velocity = Vector3.zero;
             rigi.isKinematic = true;
             flyReady = true;
         }
