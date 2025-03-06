@@ -22,3 +22,7 @@ MonoBehaviour:
     value: 5
     isTimlimit: 1
     bufTime: 5
+  - type: 1
+    value: 5
+    isTimlimit: 1
+    bufTime: 3
