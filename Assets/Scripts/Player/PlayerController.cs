@@ -187,7 +187,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     bool IsWall()
     {
-        Ray ray = new Ray(transform.position + transform.up * 0.5f, transform.forward);
+        Ray ray = new Ray(transform.position + transform.up * 0f, transform.forward);
 
         return !IsGrounded() && Physics.Raycast(ray, 0.3f, groundLayerMask);
     }
