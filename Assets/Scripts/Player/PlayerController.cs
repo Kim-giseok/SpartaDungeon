@@ -61,7 +61,11 @@ public class PlayerController : MonoBehaviour
     private void Move()
     {
         Vector3 dir = transform.forward * curMovementInput.y + transform.right * curMovementInput.x;
-        dir *= moveSpeed + (isRun ? runSpeed : 0);
+
+        float totalSpeed = moveSpeed;
+        if (CharacterManager.Instance.Player.condition.isRun)
+            totalSpeed += runSpeed;
+        dir *= totalSpeed;
         dir.y = rigi.velocity.y;
 
         rigi.velocity = dir;
@@ -101,6 +105,6 @@ public class PlayerController : MonoBehaviour
         if (context.phase == InputActionPhase.Started)
             isRun = true;
         if (context.phase == InputActionPhase.Canceled)
-            isRun = false;  
+            isRun = false;
     }
 }

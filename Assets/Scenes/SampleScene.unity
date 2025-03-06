@@ -769,6 +769,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 1762846282}
+  stamina: {fileID: 1840104799}
 --- !u!1 &608320836
 GameObject:
   m_ObjectHideFlags: 0
@@ -1900,7 +1901,7 @@ MonoBehaviour:
   curValue: 0
   maxValue: 100
   startValue: 100
-  passiveValue: 0
+  passiveValue: 10
   uiBar: {fileID: 2053233102}
 --- !u!114 &1840104800
 MonoBehaviour:

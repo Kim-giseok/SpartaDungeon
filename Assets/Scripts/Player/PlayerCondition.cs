@@ -16,18 +16,28 @@ public class PlayerCondition : MonoBehaviour, IDamagable
     public UICondition uiCondition;
 
     Condition health => uiCondition.health;
+    Condition stamina => uiCondition.stamina;
+    public bool isRun => CharacterManager.Instance.Player.controller.isRun && !grogy;
+    bool grogy = false;
 
     public float noHungerHealthDecay; // hunger가 0일때 사용할 값 (value > 0)
     public event Action onTakeDamage; // Damage 받을 때 호출할 Action
 
     private void Update()
     {
+        if (stamina.curValue <= 0)
+            grogy = true;
+        if (stamina.curValue >= stamina.maxValue)
+            grogy = false;
+
+        if (isRun)
+            stamina.Subtract(stamina.passiveValue * Time.deltaTime);
+        else
+            stamina.Add(stamina.passiveValue * Time.deltaTime);
         if (health.curValue <= 0f)
         {
             Die();
         }
-        else
-            health.curValue -= Time.deltaTime;
     }
 
     public void Heal(float amount)
