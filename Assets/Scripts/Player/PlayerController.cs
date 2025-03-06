@@ -92,6 +92,10 @@ public class PlayerController : MonoBehaviour
         return false;
     }
 
+    /// <summary>
+    /// 지정된 키를 누르면 이동속도가 증가합니다. 키를 떼면 다시 원래대로 돌아갑니다.
+    /// </summary>
+    /// <param name="context"></param>
     public void OnRunInput(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Started)
