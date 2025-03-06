@@ -84,9 +84,12 @@ public class PlayerController : MonoBehaviour
     /// <param name="context"></param>
     public void OnJumpInput(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Started && IsGrounded())
+        if (context.phase == InputActionPhase.Started)
         {
-            rigi.AddForce(Vector2.up * jumpPower, ForceMode.Impulse);
+            if (IsGrounded())
+                rigi.AddForce(Vector2.up * jumpPower, ForceMode.Impulse);
+            else if (IsWall())
+                rigi.AddForce(transform.forward * -jumpPower * 10f, ForceMode.Impulse);
         }
     }
 
@@ -107,9 +110,12 @@ public class PlayerController : MonoBehaviour
         float totalSpeed = moveSpeed;
         if (CharacterManager.Instance.Player.condition.isRun)
             totalSpeed += runSpeed;
+        dir = dir.normalized;
         dir *= totalSpeed;
 
-        if (!isWall)
+        if (isWall)
+            dir += transform.forward;
+        else
             dir.y = rigi.velocity.y;
 
         rigi.velocity = dir;
@@ -179,6 +185,6 @@ public class PlayerController : MonoBehaviour
     {
         Ray ray = new Ray(transform.position + transform.up * 0.5f, transform.forward);
 
-        return Physics.Raycast(ray, 0.3f, groundLayerMask);
+        return !IsGrounded() && Physics.Raycast(ray, 0.3f, groundLayerMask);
     }
 }
