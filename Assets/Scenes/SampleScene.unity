@@ -314,6 +314,11 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 183
+  cameraContainer: {fileID: 505031108}
+  minXLook: -80
+  maxXLook: 80
+  lookSensitivity: 0.2
+  canLook: 1
   isRun: 0
 --- !u!114 &223754417
 MonoBehaviour:
@@ -419,6 +424,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: f9d62981-17a4-4b8d-9857-efacb318ea48
     m_ActionName: Player/Run[/Keyboard/shift]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 223754416}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnLookInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 68565110-7ad8-4b28-82bb-12b0a66b37cf
+    m_ActionName: Player/Look[/Mouse/delta]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

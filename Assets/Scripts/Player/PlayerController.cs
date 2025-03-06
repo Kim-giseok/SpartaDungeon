@@ -13,6 +13,18 @@ public class PlayerController : MonoBehaviour
     public float jumpPower;
     public LayerMask groundLayerMask; // 레이어 정보
 
+    [Header("Look")]
+    public Transform cameraContainer;
+    public float minXLook; // 세로 최소 시야각
+    public float maxXLook; // 세로 최대 시야각
+    private float camCurXRot;
+    public float lookSensitivity; // 카메라 민감도
+
+    private Vector2 mouseDelta; // 마우스 변화값
+
+    [HideInInspector]
+    public bool canLook = true;
+
     private Rigidbody rigi;
 
     public bool isRun;
@@ -22,9 +34,31 @@ public class PlayerController : MonoBehaviour
         rigi = GetComponent<Rigidbody>();
     }
 
+    void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
     private void FixedUpdate()
     {
         Move();
+    }
+
+    private void LateUpdate()
+    {
+        if (canLook)
+        {
+            CameraLook();
+        }
+    }
+
+    /// <summary>
+    /// 마우스 움직임을 읽어옵니다.
+    /// </summary>
+    /// <param name="context"></param>
+    public void OnLookInput(InputAction.CallbackContext context)
+    {
+        mouseDelta = context.ReadValue<Vector2>();
     }
 
     /// <summary>
@@ -69,6 +103,18 @@ public class PlayerController : MonoBehaviour
         dir.y = rigi.velocity.y;
 
         rigi.velocity = dir;
+    }
+
+    /// <summary>
+    /// 마우스에 움직임을 따라서 카메라가 움직입니다.
+    /// </summary>
+    void CameraLook()
+    {
+        camCurXRot += mouseDelta.y * lookSensitivity;
+        camCurXRot = Mathf.Clamp(camCurXRot, minXLook, maxXLook);
+        cameraContainer.localEulerAngles = new Vector3(-camCurXRot, 0, 0);
+
+        transform.eulerAngles += new Vector3(0, mouseDelta.x * lookSensitivity, 0);
     }
 
     /// <summary>
