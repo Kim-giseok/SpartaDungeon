@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2e2b0901c6870eb4e87dcecec8472cb3, type: 3}
-  m_Name: JumpFlatform
+  m_Name: MovingFlatform
   m_EditorClassIdentifier: 
-  displayName: "\uC810\uD504\uB300"
-  description: "\uBC1F\uC73C\uBA74 \uC704\uB85C \uB6F0\uC5B4\uC624\uB985\uB2C8\uB2E4."
+  displayName: "\uC774\uB3D9\uBC1C\uD310"
+  description: "\uC77C\uC815\uAD6C\uC5ED\uC744 \uC655\uBCF5\uC774\uB3D9\uD569\uB2C8\uB2E4."
   type: 0
   icon: {fileID: 0}
   dropPrefab: {fileID: 0}
