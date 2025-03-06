@@ -11,6 +11,8 @@ public class MovingFlatform : MonoBehaviour
 
     Vector3 startP;
 
+    public Player player;
+
     private void Awake()
     {
         direction = direction.normalized;
@@ -22,5 +24,17 @@ public class MovingFlatform : MonoBehaviour
     {
         float movement = Mathf.PingPong(speed*Time.time, distance);
         transform.position = startP + direction * movement;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.TryGetComponent<Player>(out player) && collision.gameObject.transform.position.y > transform.position.y)
+            player.transform.parent = transform;
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject == player.gameObject)
+            player.transform.parent = null;
     }
 }
