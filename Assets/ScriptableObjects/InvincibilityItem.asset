@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e2b0901c6870eb4e87dcecec8472cb3, type: 3}
+  m_Name: InvincibilityItem
+  m_EditorClassIdentifier: 
+  displayName: "\uBB34\uC801"
+  description: "\uBA39\uC73C\uBA74 \uC77C\uC815\uC2DC\uAC04 \uBB34\uC801\uC0C1\uD0DC\uAC00
+    \uB418\uC5B4 \uD53C\uD574\uB97C \uBC1B\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4.."
+  type: 2
+  icon: {fileID: 0}
+  dropPrefab: {fileID: 0}
+  consumables:
+  - type: 2
+    value: 1
+    isTimlimit: 0
+    bufTime: 0
+  - type: 3
+    value: 1
+    isTimlimit: 1
+    bufTime: 5

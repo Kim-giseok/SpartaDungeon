@@ -13,7 +13,8 @@ public enum ConsumableType
 {
     HEALTH,
     SPEED,
-    DJUMP
+    DJUMP,
+    INVINCIBLE
 }
 
 [System.Serializable]
