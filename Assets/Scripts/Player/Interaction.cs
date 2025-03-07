@@ -13,6 +13,7 @@ public class Interaction : MonoBehaviour
 
     public GameObject curInteractGameObject;  // 현재 상호작용 게임오브젝트
     private IInteractable curInteractable;    // 현재 상호작용 인터페이스
+    public Transform dropPosition; //아이템 버릴 위치
 
     public TextMeshProUGUI promptText;
     private Camera mainCamera;
@@ -67,10 +68,16 @@ public class Interaction : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Started && curInteractable != null)
         {
+            Vector3 originP = dropPosition.position;
+            Quaternion originR = dropPosition.rotation;
+            dropPosition.SetPositionAndRotation(curInteractGameObject.transform.position, curInteractGameObject.transform.rotation);
+
             curInteractable.OnInteract();
             curInteractGameObject = null;
             curInteractable = null;
             promptText.gameObject.SetActive(false);
+
+            dropPosition.SetPositionAndRotation(originP, originR);
         }
     }
 }

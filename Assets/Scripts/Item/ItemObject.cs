@@ -22,20 +22,16 @@ public class ItemObject : MonoBehaviour, IInteractable
     }
 
     /// <summary>
-    /// 아이템의 상호작용입니다. 타입에 따라 다르게 동작합니다.
+    /// 아이템의 상호작용입니다. 배경물 외에는 획득합니다.
     /// </summary>
     public void OnInteract()
     {
-        switch (data.type)
-        {
-            case ItemType.RESOURCE:
-                return;
-            case ItemType.CONSUMABLE:
-                CharacterManager.Instance.Player.condition.ApplyBuf(data);
-                break;
-            case ItemType.EQUIPABLE:
-                break;
-        }
+        if (data.type == ItemType.RESOURCE)
+            return;
+
+        //Player 스크립트에 상호작용 아이템 data 넘기기.
+        CharacterManager.Instance.Player.itemData = data;
+        CharacterManager.Instance.Player.addItem?.Invoke();
         Destroy(gameObject);
     }
 }
