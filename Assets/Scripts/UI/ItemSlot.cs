@@ -31,6 +31,7 @@ public class ItemSlot : MonoBehaviour
     private void Awake()
     {
         outline = GetComponent<Outline>();
+        outline.enabled = equipped;
     }
 
     /// <summary>
