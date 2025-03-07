@@ -16,6 +16,7 @@ public class UIInventory : MonoBehaviour
     ItemData selectedItem;
     int selectedItemIndex;
 
+    int curEquipIndex;
 
     // Start is called before the first frame update
     void Start()
@@ -137,6 +138,9 @@ public class UIInventory : MonoBehaviour
                 condition.ApplyBuf(selectedItem);
                 RemoveSelctedItem();
                 break;
+            case ItemType.EQUIPABLE:
+                Equip();
+                break;
         }
     }
 
@@ -155,6 +159,33 @@ public class UIInventory : MonoBehaviour
             slots[selectedItemIndex].item = null;
             selectedItemIndex = -1;
         }
+        UpdateUI();
+    }
+
+    void Equip()
+    {
+        //이미 장착중인 장비라면 장착해제
+        if (slots[selectedItemIndex].equipped)
+        {
+            UnEquip(selectedItemIndex);
+            return;
+        }
+
+        //장착중이지 않을 경우
+        //장착중인 장비를 장착해제하고
+        if (slots[curEquipIndex].equipped)
+            UnEquip(curEquipIndex);
+        //선택한 장비를 장착
+        slots[selectedItemIndex].equipped = true;
+        curEquipIndex = selectedItemIndex;
+        CharacterManager.Instance.Player.equip.EquipNew(selectedItem);
+        UpdateUI();
+    }
+
+    void UnEquip(int index)
+    {
+        slots[index].equipped = false;
+        CharacterManager.Instance.Player.equip.UnEquip();
         UpdateUI();
     }
 }
