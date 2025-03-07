@@ -9,7 +9,10 @@ public class PlayerController : MonoBehaviour
     [Header("Movement")]
     public float moveSpeed;
     public float runSpeed; // 달리기 상태일 때 가산할 속도
-    private Vector2 curMovementInput; // 현재 입력 값
+    Vector2 curMovementInput; // 현재 입력 값
+    bool isRun;
+    public bool IsRun => isRun && curMovementInput.magnitude > 0.1f;
+
     public float jumpPower;
     bool dJump = false; // 더블점프 준비
     public LayerMask groundLayerMask; // 레이어 정보
@@ -18,17 +21,15 @@ public class PlayerController : MonoBehaviour
     public Transform cameraContainer;
     public float minXLook; // 세로 최소 시야각
     public float maxXLook; // 세로 최대 시야각
-    private float camCurXRot;
+    float camCurXRot;
     public float lookSensitivity; // 카메라 민감도
 
-    private Vector2 mouseDelta; // 마우스 변화값
+    Vector2 mouseDelta; // 마우스 변화값
 
     [HideInInspector]
     public bool canLook = true;
 
-    private Rigidbody rigi;
-
-    public bool isRun;
+    Rigidbody rigi;
 
     private void Awake()
     {
@@ -128,10 +129,7 @@ public class PlayerController : MonoBehaviour
             dir = dir.normalized * totalSpeed;
             dir.y = rigi.velocity.y;
 
-            if (IsGrounded())
-                rigi.velocity = dir;
-            else
-                rigi.AddForce(dir - rigi.velocity, ForceMode.Acceleration);
+            rigi.AddForce(dir - rigi.velocity, IsGrounded() ? ForceMode.VelocityChange : ForceMode.Acceleration);
         }
     }
 

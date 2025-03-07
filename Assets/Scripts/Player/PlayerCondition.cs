@@ -19,7 +19,7 @@ public class PlayerCondition : MonoBehaviour, IDamagable
     int invincible;
 
     Condition stamina => uiCondition.stamina;
-    public bool IsRun => CharacterManager.Instance.Player.controller.isRun && !grogy;
+    public bool IsRun => CharacterManager.Instance.Player.controller.IsRun && !grogy;
     bool grogy = false;
 
     int dJumpCount; //더블점프 가능 횟수
