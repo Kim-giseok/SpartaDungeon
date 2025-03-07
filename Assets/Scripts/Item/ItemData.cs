@@ -9,18 +9,19 @@ public enum ItemType
     CONSUMABLE
 }
 
-public enum ConsumableType
+public enum BufType
 {
     HEALTH,
     SPEED,
     DJUMP,
-    INVINCIBLE
+    INVINCIBLE,
+    JUMPPOWER
 }
 
 [System.Serializable]
 public class ItemDataConsumable
 {
-    public ConsumableType type;
+    public BufType type;
     public float value;
     public bool isTimlimit;
     public float bufTime;
@@ -34,16 +35,16 @@ public class ItemDataConsumable
         Action<float> action = null;
         switch (type)
         {
-            case ConsumableType.HEALTH:
+            case BufType.HEALTH:
                 action = condition.Heal;
                 break;
-            case ConsumableType.SPEED:
+            case BufType.SPEED:
                 action = condition.ChangeSpeed;
                 break;
-            case ConsumableType.DJUMP:
+            case BufType.DJUMP:
                 action = condition.ChangeDJumpCount;
                 break;
-            case ConsumableType.INVINCIBLE:
+            case BufType.INVINCIBLE:
                 action = condition.ChangeInvincible;
                 break;
         }

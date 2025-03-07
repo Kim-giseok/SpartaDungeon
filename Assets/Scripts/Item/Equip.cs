@@ -1,18 +1,29 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Equip : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    Action<float> buf;
+
+    public BufType bType;
+    public float amount;
+
+    public void ApplyEBuf(PlayerCondition condition)
     {
-        
+        switch(bType)
+        {
+            case BufType.SPEED:
+                buf = condition.ChangeSpeed;
+                break;
+        }
+
+        buf?.Invoke(amount);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void DeflyEBuf()
     {
-        
+        buf?.Invoke(-amount);
     }
 }

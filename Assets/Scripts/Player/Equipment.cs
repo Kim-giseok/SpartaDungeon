@@ -22,12 +22,14 @@ public class Equipment : MonoBehaviour
     {
         UnEquip();
         curEquip = Instantiate(data.equipPrefab, equipParent).GetComponent<Equip>();
+        curEquip.ApplyEBuf(condition);
     }
 
     public void UnEquip()
     {
         if (curEquip != null)
         {
+            curEquip.DeflyEBuf();
             Destroy(curEquip.gameObject);
             curEquip = null;
         }
