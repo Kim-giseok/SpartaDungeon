@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-// Condition °³º° ¹Ù´Â °°Àº ·ÎÁ÷À» °øÀ¯
-// ÄÚµå ÀçÈ°¿ëÀ» À§ÇØ °³º° ½ºÅ©¸³Æ®·Î ÀÛ¾÷
+// Condition ê°œë³„ ë°”ëŠ” ê°™ì€ ë¡œì§ì„ ê³µìœ 
+// ì½”ë“œ ì¬í™œìš©ì„ ìœ„í•´ ê°œë³„ ìŠ¤í¬ë¦½íŠ¸ë¡œ ì‘ì—…
 public class Condition : MonoBehaviour
 {
     public float curValue;

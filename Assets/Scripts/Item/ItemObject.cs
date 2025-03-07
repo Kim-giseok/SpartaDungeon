@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
 
-// ÀÎÅÍ·¢¼Ç °¡´ÉÇÑ °´Ã¼¿¡ »ó¼ÓÇÒ ÀÎÅÍÆäÀÌ½º
+// ì¸í„°ë™ì…˜ ê°€ëŠ¥í•œ ê°ì²´ì— ìƒì†í•  ì¸í„°í˜ì´ìŠ¤
 public interface IInteractable
 {
-    public string GetInteractPrompt();  // UI¿¡ Ç¥½ÃÇÒ Á¤º¸
-    public void OnInteract();           // ÀÎÅÍ·¢¼Ç È£Ãâ
+    public string GetInteractPrompt();  // UIì— í‘œì‹œí•  ì •ë³´
+    public void OnInteract();           // ì¸í„°ë™ì…˜ í˜¸ì¶œ
 }
 
 public class ItemObject : MonoBehaviour, IInteractable
@@ -22,14 +22,14 @@ public class ItemObject : MonoBehaviour, IInteractable
     }
 
     /// <summary>
-    /// ¾ÆÀÌÅÛÀÇ »óÈ£ÀÛ¿ëÀÔ´Ï´Ù. ¹è°æ¹° ¿Ü¿¡´Â È¹µæÇÕ´Ï´Ù.
+    /// ì•„ì´í…œì˜ ìƒí˜¸ì‘ìš©ì…ë‹ˆë‹¤. ë°°ê²½ë¬¼ ì™¸ì—ëŠ” íšë“í•©ë‹ˆë‹¤.
     /// </summary>
     public void OnInteract()
     {
         if (data.type == ItemType.RESOURCE)
             return;
 
-        //Player ½ºÅ©¸³Æ®¿¡ »óÈ£ÀÛ¿ë ¾ÆÀÌÅÛ data ³Ñ±â±â.
+        //Player ìŠ¤í¬ë¦½íŠ¸ì— ìƒí˜¸ì‘ìš© ì•„ì´í…œ data ë„˜ê¸°ê¸°.
         CharacterManager.Instance.Player.itemData = data;
         CharacterManager.Instance.Player.addItem?.Invoke();
         Destroy(gameObject);

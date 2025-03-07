@@ -8,8 +8,8 @@ public interface IDamagable
     void TakePhysicalDamage(int damageAmount);
 }
 
-// UI¸¦ ÂüÁ¶ÇÒ ¼ö ÀÖ´Â PlayerCondition
-// ¿ÜºÎ¿¡¼­ ´É·ÂÄ¡ º¯°æ ±â´ÉÀº ÀÌ°÷À» ÅëÇØ¼­ È£Ãâ. ³»ºÎÀûÀ¸·Î UI ¾÷µ¥ÀÌÆ® ¼öÇà.
+// UIë¥¼ ì°¸ì¡°í•  ìˆ˜ ìˆëŠ” PlayerCondition
+// ì™¸ë¶€ì—ì„œ ëŠ¥ë ¥ì¹˜ ë³€ê²½ ê¸°ëŠ¥ì€ ì´ê³³ì„ í†µí•´ì„œ í˜¸ì¶œ. ë‚´ë¶€ì ìœ¼ë¡œ UI ì—…ë°ì´íŠ¸ ìˆ˜í–‰.
 public class PlayerCondition : MonoBehaviour, IDamagable
 {
 
@@ -22,10 +22,10 @@ public class PlayerCondition : MonoBehaviour, IDamagable
     public bool IsRun => CharacterManager.Instance.Player.controller.IsRun && !grogy;
     bool grogy = false;
 
-    int dJumpCount; //´õºíÁ¡ÇÁ °¡´É È½¼ö
+    int dJumpCount; //ë”ë¸”ì í”„ ê°€ëŠ¥ íšŸìˆ˜
     public bool DJumpable => dJumpCount >= 1;
 
-    public event Action onTakeDamage; // Damage ¹ŞÀ» ¶§ È£ÃâÇÒ Action
+    public event Action onTakeDamage; // Damage ë°›ì„ ë•Œ í˜¸ì¶œí•  Action
 
     private void Update()
     {
@@ -50,25 +50,25 @@ public class PlayerCondition : MonoBehaviour, IDamagable
 
     public void Die()
     {
-        Debug.Log("ÇÃ·¹ÀÌ¾î°¡ Á×¾ú´Ù.");
+        Debug.Log("í”Œë ˆì´ì–´ê°€ ì£½ì—ˆë‹¤.");
     }
 
     /// <summary>
-    /// µ¥¹ÌÁö ¹ŞÀ» ¶§ ÇÊ¿äÇÑ ·ÎÁ÷ ÀÛ¼º (health °¨¼Ò, µ¥¹ÌÁö Action È£Ãâ)
+    /// ë°ë¯¸ì§€ ë°›ì„ ë•Œ í•„ìš”í•œ ë¡œì§ ì‘ì„± (health ê°ì†Œ, ë°ë¯¸ì§€ Action í˜¸ì¶œ)
     /// </summary>
     /// <param name="damageAmount"></param>
     public void TakePhysicalDamage(int damageAmount)
     {
         if (invincible > 0) return;
-        Debug.Log("°ø°İ´çÇÔ");
+        Debug.Log("ê³µê²©ë‹¹í•¨");
         health.Subtract(damageAmount);
         onTakeDamage?.Invoke();
     }
 
     /// <summary>
-    /// ÇÃ·¹ÀÌ¾îÀÇ ½ºÇÇµå¸¦ º¯È­½ÃÅµ´Ï´Ù.
+    /// í”Œë ˆì´ì–´ì˜ ìŠ¤í”¼ë“œë¥¼ ë³€í™”ì‹œí‚µë‹ˆë‹¤.
     /// </summary>
-    /// <param name="speedAmount">º¯È­½ÃÅ³ ¼öÄ¡ÀÔ´Ï´Ù. ¾ç¼ö¸é Áõ°¡, À½¼ö¸é °¨¼ÒÇÕ´Ï´Ù.</param>
+    /// <param name="speedAmount">ë³€í™”ì‹œí‚¬ ìˆ˜ì¹˜ì…ë‹ˆë‹¤. ì–‘ìˆ˜ë©´ ì¦ê°€, ìŒìˆ˜ë©´ ê°ì†Œí•©ë‹ˆë‹¤.</param>
     public void ChangeSpeed(float speedAmount)
     {
         CharacterManager.Instance.Player.controller.moveSpeed += speedAmount;
@@ -90,9 +90,9 @@ public class PlayerCondition : MonoBehaviour, IDamagable
     }
 
     /// <summary>
-    /// ¾ÆÀÌÅÛÀÇ ¹öÇÁ¼öÄ¡µéÀ» Àû¿ëÇÕ´Ï´Ù. ¾ÆÀÌÅÛÀº »ç¿ë ÈÄ »ç¶óÁö±â ¶§¹®¿¡ ÄÚ·çÆ¾ À¯Áö¸¦ À§ÇØ ¿©±â¼­ È£ÃâÇÕ´Ï´Ù.
+    /// ì•„ì´í…œì˜ ë²„í”„ìˆ˜ì¹˜ë“¤ì„ ì ìš©í•©ë‹ˆë‹¤. ì•„ì´í…œì€ ì‚¬ìš© í›„ ì‚¬ë¼ì§€ê¸° ë•Œë¬¸ì— ì½”ë£¨í‹´ ìœ ì§€ë¥¼ ìœ„í•´ ì—¬ê¸°ì„œ í˜¸ì¶œí•©ë‹ˆë‹¤.
     /// </summary>
-    /// <param name="data">¾ÆÀÌÅÛÀÌ °¡Áö°í ÀÖ´Â Á¤º¸ÀÔ´Ï´Ù.</param>
+    /// <param name="data">ì•„ì´í…œì´ ê°€ì§€ê³  ìˆëŠ” ì •ë³´ì…ë‹ˆë‹¤.</param>
     public void ApplyBuf(ItemData data)
     {
         foreach (var consumable in data.consumables)

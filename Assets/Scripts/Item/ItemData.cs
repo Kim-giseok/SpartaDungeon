@@ -27,7 +27,7 @@ public class ItemDataConsumable
     public float bufTime;
 
     /// <summary>
-    /// ¾ÆÀÌÅÛÀÇ ¹öÇÁ³»¿ëÀ» Àû¿ëÇÕ´Ï´Ù. Áßº¹Àû¿ëÀ» À§ÇØ¼­ ¿©±â¿¡ ¼±¾ğÇØµÎ¾ú½À´Ï´Ù.
+    /// ì•„ì´í…œì˜ ë²„í”„ë‚´ìš©ì„ ì ìš©í•©ë‹ˆë‹¤. ì¤‘ë³µì ìš©ì„ ìœ„í•´ì„œ ì—¬ê¸°ì— ì„ ì–¸í•´ë‘ì—ˆìŠµë‹ˆë‹¤.
     /// </summary>
     /// <returns></returns>
     public IEnumerator ApplyBuf(PlayerCondition condition)

@@ -8,23 +8,23 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Movement")]
     public float moveSpeed;
-    public float runSpeed; // ´Ş¸®±â »óÅÂÀÏ ¶§ °¡»êÇÒ ¼Óµµ
-    Vector2 curMovementInput; // ÇöÀç ÀÔ·Â °ª
+    public float runSpeed; // ë‹¬ë¦¬ê¸° ìƒíƒœì¼ ë•Œ ê°€ì‚°í•  ì†ë„
+    Vector2 curMovementInput; // í˜„ì¬ ì…ë ¥ ê°’
     bool isRun;
     public bool IsRun => isRun && curMovementInput.magnitude > 0.1f;
 
     public float jumpPower;
-    bool dJump = false; // ´õºíÁ¡ÇÁ ÁØºñ
-    public LayerMask groundLayerMask; // ·¹ÀÌ¾î Á¤º¸
+    bool dJump = false; // ë”ë¸”ì í”„ ì¤€ë¹„
+    public LayerMask groundLayerMask; // ë ˆì´ì–´ ì •ë³´
 
     [Header("Look")]
     public Transform cameraContainer;
-    public float minXLook; // ¼¼·Î ÃÖ¼Ò ½Ã¾ß°¢
-    public float maxXLook; // ¼¼·Î ÃÖ´ë ½Ã¾ß°¢
+    public float minXLook; // ì„¸ë¡œ ìµœì†Œ ì‹œì•¼ê°
+    public float maxXLook; // ì„¸ë¡œ ìµœëŒ€ ì‹œì•¼ê°
     float camCurXRot;
-    public float lookSensitivity; // Ä«¸Ş¶ó ¹Î°¨µµ
+    public float lookSensitivity; // ì¹´ë©”ë¼ ë¯¼ê°ë„
 
-    Vector2 mouseDelta; // ¸¶¿ì½º º¯È­°ª
+    Vector2 mouseDelta; // ë§ˆìš°ìŠ¤ ë³€í™”ê°’
 
     [HideInInspector]
     public bool canLook = true;
@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
     }
 
     /// <summary>
-    /// ¸¶¿ì½º ¿òÁ÷ÀÓÀ» ÀĞ¾î¿É´Ï´Ù.
+    /// ë§ˆìš°ìŠ¤ ì›€ì§ì„ì„ ì½ì–´ì˜µë‹ˆë‹¤.
     /// </summary>
     /// <param name="context"></param>
     public void OnLookInput(InputAction.CallbackContext context)
@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
     }
 
     /// <summary>
-    /// Å°º¸µå ÀÔ·Â¿¡ µû¶ó ÀÌµ¿¹æÇâÀ» °áÁ¤ÇÕ´Ï´Ù.
+    /// í‚¤ë³´ë“œ ì…ë ¥ì— ë”°ë¼ ì´ë™ë°©í–¥ì„ ê²°ì •í•©ë‹ˆë‹¤.
     /// </summary>
     /// <param name="context"></param>
     public void OnMoveInput(InputAction.CallbackContext context)
@@ -83,7 +83,7 @@ public class PlayerController : MonoBehaviour
     }
 
     /// <summary>
-    /// Á¡ÇÁÅ° ÀÔ·Â ½Ã Áö¸é¿¡ ´ê¾ÆÀÖÀ¸¸é À§·Î ¶Ù¾î¿À¸¨´Ï´Ù.
+    /// ì í”„í‚¤ ì…ë ¥ ì‹œ ì§€ë©´ì— ë‹¿ì•„ìˆìœ¼ë©´ ìœ„ë¡œ ë›°ì–´ì˜¤ë¦…ë‹ˆë‹¤.
     /// </summary>
     /// <param name="context"></param>
     public void OnJumpInput(InputAction.CallbackContext context)
@@ -108,7 +108,7 @@ public class PlayerController : MonoBehaviour
     }
 
     /// <summary>
-    /// ÁöÁ¤µÈ ¹æÇâÀ¸·Î ÀÌµ¿ÇÕ´Ï´Ù.
+    /// ì§€ì •ëœ ë°©í–¥ìœ¼ë¡œ ì´ë™í•©ë‹ˆë‹¤.
     /// </summary>
     private void Move()
     {
@@ -136,7 +136,7 @@ public class PlayerController : MonoBehaviour
     }
 
     /// <summary>
-    /// ¸¶¿ì½º¿¡ ¿òÁ÷ÀÓÀ» µû¶ó¼­ Ä«¸Ş¶ó°¡ ¿òÁ÷ÀÔ´Ï´Ù.
+    /// ë§ˆìš°ìŠ¤ì— ì›€ì§ì„ì„ ë”°ë¼ì„œ ì¹´ë©”ë¼ê°€ ì›€ì§ì…ë‹ˆë‹¤.
     /// </summary>
     void CameraLook()
     {
@@ -145,7 +145,7 @@ public class PlayerController : MonoBehaviour
 
         if (IsWall())
         {
-            //º®¿¡ ºÙ¾îÀÖ´Ù¸é ÇÃ·¹ÀÌ¾î´Â È¸ÀüÇÏÁö ¾Ê½À´Ï´Ù.
+            //ë²½ì— ë¶™ì–´ìˆë‹¤ë©´ í”Œë ˆì´ì–´ëŠ” íšŒì „í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.
             cameraContainer.localEulerAngles = new Vector3(-camCurXRot, cameraContainer.localEulerAngles.y + mouseDelta.x * lookSensitivity, 0);
         }
         else
@@ -157,9 +157,9 @@ public class PlayerController : MonoBehaviour
     }
 
     /// <summary>
-    /// Áö¸é¿¡ ´ê¾ÆÀÖ´ÂÁö È®ÀÎÇÕ´Ï´Ù.
+    /// ì§€ë©´ì— ë‹¿ì•„ìˆëŠ”ì§€ í™•ì¸í•©ë‹ˆë‹¤.
     /// </summary>
-    /// <returns>Áö¸é¿¡ ´ê¾ÆÀÖÀ¸¸é true, ±×·¸Áö ¾ÊÀ¸¸é false¸¦ ¹İÈ¯ÇÕ´Ï´Ù.</returns>
+    /// <returns>ì§€ë©´ì— ë‹¿ì•„ìˆìœ¼ë©´ true, ê·¸ë ‡ì§€ ì•Šìœ¼ë©´ falseë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤.</returns>
     bool IsGrounded()
     {
         Ray[] rays = new Ray[4]
@@ -182,7 +182,7 @@ public class PlayerController : MonoBehaviour
     }
 
     /// <summary>
-    /// ÁöÁ¤µÈ Å°¸¦ ´©¸£¸é ÀÌµ¿¼Óµµ°¡ Áõ°¡ÇÕ´Ï´Ù. Å°¸¦ ¶¼¸é ´Ù½Ã ¿ø·¡´ë·Î µ¹¾Æ°©´Ï´Ù.
+    /// ì§€ì •ëœ í‚¤ë¥¼ ëˆ„ë¥´ë©´ ì´ë™ì†ë„ê°€ ì¦ê°€í•©ë‹ˆë‹¤. í‚¤ë¥¼ ë–¼ë©´ ë‹¤ì‹œ ì›ë˜ëŒ€ë¡œ ëŒì•„ê°‘ë‹ˆë‹¤.
     /// </summary>
     /// <param name="context"></param>
     public void OnRunInput(InputAction.CallbackContext context)
@@ -194,7 +194,7 @@ public class PlayerController : MonoBehaviour
     }
 
     /// <summary>
-    /// º®¿¡ ºÙ¾ú´ÂÁö È®ÀÎÇÕ´Ï´Ù.
+    /// ë²½ì— ë¶™ì—ˆëŠ”ì§€ í™•ì¸í•©ë‹ˆë‹¤.
     /// </summary>
     bool IsWall()
     {

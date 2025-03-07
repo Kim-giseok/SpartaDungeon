@@ -6,16 +6,16 @@ using UnityEngine.UI;
 
 public class ItemSlot : MonoBehaviour
 {
-    public ItemData item;   // ¾ÆÀÌÅÛ µ¥ÀÌÅÍ
+    public ItemData item;   // ì•„ì´í…œ ë°ì´í„°
 
     public UIInventory inventory;
 
     public Image icon;
-    public TextMeshProUGUI quatityText;  // ¼ö·®Ç¥½Ã Text
-    public TextMeshProUGUI IndexText;  // ¼ö·®Ç¥½Ã Text
-    private Outline outline;             // ¼±ÅÃ½Ã Outline Ç¥½ÃÀ§ÇÑ ÄÄÆ÷³ÍÆ®
+    public TextMeshProUGUI quatityText;  // ìˆ˜ëŸ‰í‘œì‹œ Text
+    public TextMeshProUGUI IndexText;  // ìˆ˜ëŸ‰í‘œì‹œ Text
+    private Outline outline;             // ì„ íƒì‹œ Outline í‘œì‹œìœ„í•œ ì»´í¬ë„ŒíŠ¸
 
-    int index;                    // ¸î ¹øÂ° SlotÀÎÁö index ÇÒ´ç
+    int index;                    // ëª‡ ë²ˆì§¸ Slotì¸ì§€ index í• ë‹¹
     public int Index
     {
         get => index;
@@ -25,8 +25,8 @@ public class ItemSlot : MonoBehaviour
             IndexText.text = index.ToString();
         }
     }
-    public bool equipped;                // ÀåÂø¿©ºÎ
-    public int quantity;                 // ¼ö·®µ¥ÀÌÅÍ
+    public bool equipped;                // ì¥ì°©ì—¬ë¶€
+    public int quantity;                 // ìˆ˜ëŸ‰ë°ì´í„°
 
     private void Awake()
     {
@@ -35,8 +35,8 @@ public class ItemSlot : MonoBehaviour
     }
 
     /// <summary>
-    /// UI(½½·Ô ÇÑ Ä­) ¾÷µ¥ÀÌÆ®¸¦ À§ÇÑ ÇÔ¼ö
-    /// ¾ÆÀÌÅÛµ¥ÀÌÅÍ¿¡¼­ ÇÊ¿äÇÑ Á¤º¸¸¦ °¢ UI¿¡ Ç¥½Ã
+    /// UI(ìŠ¬ë¡¯ í•œ ì¹¸) ì—…ë°ì´íŠ¸ë¥¼ ìœ„í•œ í•¨ìˆ˜
+    /// ì•„ì´í…œë°ì´í„°ì—ì„œ í•„ìš”í•œ ì •ë³´ë¥¼ ê° UIì— í‘œì‹œ
     /// </summary>
     public void Set()
     {
@@ -51,7 +51,7 @@ public class ItemSlot : MonoBehaviour
     }
 
     /// <summary>
-    /// UI(½½·Ô ÇÑ Ä­)¿¡ Á¤º¸°¡ ¾øÀ» ¶§ UI¸¦ ºñ¿öÁÖ´Â ÇÔ¼ö
+    /// UI(ìŠ¬ë¡¯ í•œ ì¹¸)ì— ì •ë³´ê°€ ì—†ì„ ë•Œ UIë¥¼ ë¹„ì›Œì£¼ëŠ” í•¨ìˆ˜
     /// </summary>
     public void Clear()
     {

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// °³º° Condition ¹ÙÀÇ Á¶ÇÕÀ¸·Î ÀÌ·ç¾îÁø UICondition
+// ê°œë³„ Condition ë°”ì˜ ì¡°í•©ìœ¼ë¡œ ì´ë£¨ì–´ì§„ UICondition
 public class UICondition : MonoBehaviour
 {
     public Condition health;

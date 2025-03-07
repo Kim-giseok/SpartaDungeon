@@ -40,7 +40,7 @@ public class Lazer : MonoBehaviour, IInteractable
 
     public string GetInteractPrompt()
     {
-        return "·¹ÀÌÀú ÀåÄ¡\n" + (activate ? "Á¤¸é¿¡ ¼­¸é µ¥¹ÌÁö¸¦ ÀÔ½À´Ï´Ù. [E]Å°·Î ÀÛµ¿Á¤Áö" : "ÀÛµ¿ÇÏÁö ¾Ê°í ÀÖ½À´Ï´Ù. [E]Å°·Î ÀÛµ¿");
+        return "ë ˆì´ì € ì¥ì¹˜\n" + (activate ? "ì •ë©´ì— ì„œë©´ ë°ë¯¸ì§€ë¥¼ ì…ìŠµë‹ˆë‹¤. [E]í‚¤ë¡œ ì‘ë™ì •ì§€" : "ì‘ë™í•˜ì§€ ì•Šê³  ìˆìŠµë‹ˆë‹¤. [E]í‚¤ë¡œ ì‘ë™");
     }
 
     public void OnInteract()

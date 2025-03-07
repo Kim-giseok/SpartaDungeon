@@ -17,7 +17,7 @@ public class FlyFlatform : MonoBehaviour, IInteractable
 
     public string GetInteractPrompt()
     {
-        return flyReady ? "¹ß»ç´ë\n[E]Å°·Î ¹ß»ç" : "¹ß»çµÈ ¹ß»ç´ë\nÀá½Ã ÈÄ ¿ø·¡ÀÚ¸®·Î µ¹¾Æ°©´Ï´Ù.";
+        return flyReady ? "ë°œì‚¬ëŒ€\n[E]í‚¤ë¡œ ë°œì‚¬" : "ë°œì‚¬ëœ ë°œì‚¬ëŒ€\nì ì‹œ í›„ ì›ë˜ìë¦¬ë¡œ ëŒì•„ê°‘ë‹ˆë‹¤.";
     }
 
     public void OnInteract()

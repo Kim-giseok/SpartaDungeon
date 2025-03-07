@@ -10,9 +10,9 @@ public class UIInventory : MonoBehaviour
 
     public ItemSlot[] slots;
     public Transform slotPanel;
-    public Transform dropPosition;      // item ¹ö¸± ¶§ ÇÊ¿äÇÑ À§Ä¡
+    public Transform dropPosition;      // item ë²„ë¦´ ë•Œ í•„ìš”í•œ ìœ„ì¹˜
 
-    [Header("Selected Item")]           // ¼±ÅÃÇÑ ½½·ÔÀÇ ¾ÆÀÌÅÛ Á¤º¸ Ç¥½Ã À§ÇÑ UI
+    [Header("Selected Item")]           // ì„ íƒí•œ ìŠ¬ë¡¯ì˜ ì•„ì´í…œ ì •ë³´ í‘œì‹œ ìœ„í•œ UI
     ItemData selectedItem;
     int selectedItemIndex;
 
@@ -24,11 +24,11 @@ public class UIInventory : MonoBehaviour
         controller = CharacterManager.Instance.Player.controller;
         condition = CharacterManager.Instance.Player.condition;
 
-        // Action È£Ãâ ½Ã ÇÊ¿äÇÑ ÇÔ¼ö µî·Ï
-        CharacterManager.Instance.Player.addItem += AddItem;  // ¾ÆÀÌÅÛ ÆÄ¹Ö ½Ã
+        // Action í˜¸ì¶œ ì‹œ í•„ìš”í•œ í•¨ìˆ˜ ë“±ë¡
+        CharacterManager.Instance.Player.addItem += AddItem;  // ì•„ì´í…œ íŒŒë° ì‹œ
         controller.selectItem = SelectItem;
 
-        // Inventory UI ÃÊ±âÈ­ ·ÎÁ÷µé
+        // Inventory UI ì´ˆê¸°í™” ë¡œì§ë“¤
         slots = new ItemSlot[slotPanel.childCount];
 
         for (int i = 0; i < slots.Length; i++)
@@ -42,10 +42,10 @@ public class UIInventory : MonoBehaviour
 
     public void AddItem()
     {
-        //ItemObject ·ÎÁ÷¿¡¼­ Player¿¡ ³Ñ°ÜÁØ Á¤º¸¸¦ °¡Áö°í ¿È
+        //ItemObject ë¡œì§ì—ì„œ Playerì— ë„˜ê²¨ì¤€ ì •ë³´ë¥¼ ê°€ì§€ê³  ì˜´
         ItemData data = CharacterManager.Instance.Player.itemData;
 
-        // ¿©·¯°³ °¡Áú ¼ö ÀÖ´Â ¾ÆÀÌÅÛÀÌ¶ó¸é
+        // ì—¬ëŸ¬ê°œ ê°€ì§ˆ ìˆ˜ ìˆëŠ” ì•„ì´í…œì´ë¼ë©´
         if (data.canStack)
         {
             ItemSlot slot = GetItemStack(data);
@@ -58,10 +58,10 @@ public class UIInventory : MonoBehaviour
             }
         }
 
-        // ºó ½½·Ô Ã£±â
+        // ë¹ˆ ìŠ¬ë¡¯ ì°¾ê¸°
         ItemSlot emptySlot = GetEmptySlot();
 
-        // ºó ½½·ÔÀÌ ÀÖ´Ù¸é
+        // ë¹ˆ ìŠ¬ë¡¯ì´ ìˆë‹¤ë©´
         if (emptySlot != null)
         {
             emptySlot.item = data;
@@ -71,17 +71,17 @@ public class UIInventory : MonoBehaviour
             return;
         }
 
-        // ºó ½½·Ô ¸¶Àú ¾øÀ» ¶§
+        // ë¹ˆ ìŠ¬ë¡¯ ë§ˆì € ì—†ì„ ë•Œ
         ThrowItem(data);
         CharacterManager.Instance.Player.itemData = null;
     }
 
-    // UI Á¤º¸ »õ·Î°íÄ§
+    // UI ì •ë³´ ìƒˆë¡œê³ ì¹¨
     public void UpdateUI()
     {
         for (int i = 0; i < slots.Length; i++)
         {
-            // ½½·Ô¿¡ ¾ÆÀÌÅÛ Á¤º¸°¡ ÀÖ´Ù¸é
+            // ìŠ¬ë¡¯ì— ì•„ì´í…œ ì •ë³´ê°€ ìˆë‹¤ë©´
             if (slots[i].item != null)
             {
                 slots[i].Set();
@@ -93,7 +93,7 @@ public class UIInventory : MonoBehaviour
         }
     }
 
-    // ¿©·¯°³ °¡Áú ¼ö ÀÖ´Â ¾ÆÀÌÅÛÀÇ Á¤º¸ Ã£¾Æ¼­ return
+    // ì—¬ëŸ¬ê°œ ê°€ì§ˆ ìˆ˜ ìˆëŠ” ì•„ì´í…œì˜ ì •ë³´ ì°¾ì•„ì„œ return
     ItemSlot GetItemStack(ItemData data)
     {
         for (int i = 0; i < slots.Length; i++)
@@ -106,7 +106,7 @@ public class UIInventory : MonoBehaviour
         return null;
     }
 
-    // ½½·ÔÀÇ item Á¤º¸°¡ ºñ¾îÀÖ´Â Á¤º¸ return
+    // ìŠ¬ë¡¯ì˜ item ì •ë³´ê°€ ë¹„ì–´ìˆëŠ” ì •ë³´ return
     ItemSlot GetEmptySlot()
     {
         for (int i = 0; i < slots.Length; i++)
@@ -119,7 +119,7 @@ public class UIInventory : MonoBehaviour
         return null;
     }
 
-    // ¾ÆÀÌÅÛ ¹ö¸®±â (½ÇÁ¦·Ğ ¸Å°³º¯¼ö·Î µé¾î¿Â µ¥ÀÌÅÍ¿¡ ÇØ´çÇÏ´Â ¾ÆÀÌÅÛ »ı¼º)
+    // ì•„ì´í…œ ë²„ë¦¬ê¸° (ì‹¤ì œë¡  ë§¤ê°œë³€ìˆ˜ë¡œ ë“¤ì–´ì˜¨ ë°ì´í„°ì— í•´ë‹¹í•˜ëŠ” ì•„ì´í…œ ìƒì„±)
     public void ThrowItem(ItemData data)
     {
         Instantiate(data.dropPrefab, dropPosition.position, dropPosition.rotation);
@@ -164,18 +164,18 @@ public class UIInventory : MonoBehaviour
 
     void Equip()
     {
-        //ÀÌ¹Ì ÀåÂøÁßÀÎ Àåºñ¶ó¸é ÀåÂøÇØÁ¦
+        //ì´ë¯¸ ì¥ì°©ì¤‘ì¸ ì¥ë¹„ë¼ë©´ ì¥ì°©í•´ì œ
         if (slots[selectedItemIndex].equipped)
         {
             UnEquip(selectedItemIndex);
             return;
         }
 
-        //ÀåÂøÁßÀÌÁö ¾ÊÀ» °æ¿ì
-        //ÀåÂøÁßÀÎ Àåºñ¸¦ ÀåÂøÇØÁ¦ÇÏ°í
+        //ì¥ì°©ì¤‘ì´ì§€ ì•Šì„ ê²½ìš°
+        //ì¥ì°©ì¤‘ì¸ ì¥ë¹„ë¥¼ ì¥ì°©í•´ì œí•˜ê³ 
         if (slots[curEquipIndex].equipped)
             UnEquip(curEquipIndex);
-        //¼±ÅÃÇÑ Àåºñ¸¦ ÀåÂø
+        //ì„ íƒí•œ ì¥ë¹„ë¥¼ ì¥ì°©
         slots[selectedItemIndex].equipped = true;
         curEquipIndex = selectedItemIndex;
         CharacterManager.Instance.Player.equip.EquipNew(selectedItem);

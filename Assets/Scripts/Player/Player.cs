@@ -3,8 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Player¿Í °ü·ÃµÈ ±â´ÉÀ» ¸ğ¾ÆµÎ´Â °÷.
-// ÀÌ°÷À» ÅëÇØ ±â´É¿¡ °¢°¢ Á¢±Ù.
+// Playerì™€ ê´€ë ¨ëœ ê¸°ëŠ¥ì„ ëª¨ì•„ë‘ëŠ” ê³³.
+// ì´ê³³ì„ í†µí•´ ê¸°ëŠ¥ì— ê°ê° ì ‘ê·¼.
 public class Player : MonoBehaviour
 {
     public PlayerController controller;
@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        // ½Ì±ÛÅæ¸Å´ÏÀú¿¡ Player¸¦ ÂüÁ¶ÇÒ ¼ö ÀÖ°Ô µ¥ÀÌÅÍ¸¦ ³Ñ±ä´Ù.
+        // ì‹±ê¸€í†¤ë§¤ë‹ˆì €ì— Playerë¥¼ ì°¸ì¡°í•  ìˆ˜ ìˆê²Œ ë°ì´í„°ë¥¼ ë„˜ê¸´ë‹¤.
         CharacterManager.Instance.Player = this;
         controller = GetComponent<PlayerController>();
         condition = GetComponent<PlayerCondition>();

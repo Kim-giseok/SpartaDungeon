@@ -6,14 +6,14 @@ using UnityEngine.InputSystem;
 
 public class Interaction : MonoBehaviour
 {
-    public float checkRate = 0.05f;    // »óÈ£ÀÛ¿ë ¿ÀºêÁ§Æ® Ã¼Å© ½Ã°£
-    private float lastCheckTime;       // ¸¶Áö¸· »óÈ£ÀÛ¿ë Ã¼Å© ½Ã°£
-    public float maxCheckDistance;     // ÃÖ´ë Ã¼Å© °Å¸®
+    public float checkRate = 0.05f;    // ìƒí˜¸ì‘ìš© ì˜¤ë¸Œì íŠ¸ ì²´í¬ ì‹œê°„
+    private float lastCheckTime;       // ë§ˆì§€ë§‰ ìƒí˜¸ì‘ìš© ì²´í¬ ì‹œê°„
+    public float maxCheckDistance;     // ìµœëŒ€ ì²´í¬ ê±°ë¦¬
     public LayerMask layerMask;
 
-    public GameObject curInteractGameObject;  // ÇöÀç »óÈ£ÀÛ¿ë °ÔÀÓ¿ÀºêÁ§Æ®
-    private IInteractable curInteractable;    // ÇöÀç »óÈ£ÀÛ¿ë ÀÎÅÍÆäÀÌ½º
-    public Transform dropPosition; //¾ÆÀÌÅÛ ¹ö¸± À§Ä¡
+    public GameObject curInteractGameObject;  // í˜„ì¬ ìƒí˜¸ì‘ìš© ê²Œì„ì˜¤ë¸Œì íŠ¸
+    private IInteractable curInteractable;    // í˜„ì¬ ìƒí˜¸ì‘ìš© ì¸í„°í˜ì´ìŠ¤
+    public Transform dropPosition; //ì•„ì´í…œ ë²„ë¦´ ìœ„ì¹˜
 
     public TextMeshProUGUI promptText;
     private Camera mainCamera;
@@ -52,7 +52,7 @@ public class Interaction : MonoBehaviour
     }
 
     /// <summary>
-    /// ¾ÆÀÌÅÛÀÇ Á¤º¸¸¦ Ç¥½ÃÇÕ´Ï´Ù.
+    /// ì•„ì´í…œì˜ ì •ë³´ë¥¼ í‘œì‹œí•©ë‹ˆë‹¤.
     /// </summary>
     private void SetPromptText()
     {
@@ -61,7 +61,7 @@ public class Interaction : MonoBehaviour
     }
 
     /// <summary>
-    /// »óÈ£ÀÛ¿ë Å°¸¦ ´©¸£¸é º¸°íÀÖ´Â ¾ÆÀÌÅÛ°ú »óÈ£ÀÛ¿ëÇÕ´Ï´Ù.
+    /// ìƒí˜¸ì‘ìš© í‚¤ë¥¼ ëˆ„ë¥´ë©´ ë³´ê³ ìˆëŠ” ì•„ì´í…œê³¼ ìƒí˜¸ì‘ìš©í•©ë‹ˆë‹¤.
     /// </summary>
     /// <param name="context"></param>
     public void OnInteractInput(InputAction.CallbackContext context)

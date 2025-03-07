@@ -5,9 +5,9 @@ using UnityEngine;
 public class MovingFlatform : MonoBehaviour, IInteractable
 {
     [Header("Move Info")]
-    public float distance; //ÀüÁøÇÒ °Å¸®ÀÔ´Ï´Ù. ÇØ´ç °Å¸®¸¸Å­ ÀüÁøÇÑ ÈÄ, ´Ù½Ã µ¹¾Æ¿É´Ï´Ù.
-    public Vector3 direction; // ÀüÁøÇÒ ¹æÇâÀÔ´Ï´Ù.
-    public float speed; //ÀÌµ¿¼ÓµµÀÔ´Ï´Ù.
+    public float distance; //ì „ì§„í•  ê±°ë¦¬ì…ë‹ˆë‹¤. í•´ë‹¹ ê±°ë¦¬ë§Œí¼ ì „ì§„í•œ í›„, ë‹¤ì‹œ ëŒì•„ì˜µë‹ˆë‹¤.
+    public Vector3 direction; // ì „ì§„í•  ë°©í–¥ì…ë‹ˆë‹¤.
+    public float speed; //ì´ë™ì†ë„ì…ë‹ˆë‹¤.
 
     Vector3 startP;
 
@@ -40,7 +40,7 @@ public class MovingFlatform : MonoBehaviour, IInteractable
 
     public string GetInteractPrompt()
     {
-        return "ÀÌµ¿¹ßÆÇ\nÀ§¿¡ ¿Ã¶óÅ¸¸é ¿Å°ÜÁİ´Ï´Ù.";
+        return "ì´ë™ë°œíŒ\nìœ„ì— ì˜¬ë¼íƒ€ë©´ ì˜®ê²¨ì¤ë‹ˆë‹¤.";
     }
 
     public void OnInteract()

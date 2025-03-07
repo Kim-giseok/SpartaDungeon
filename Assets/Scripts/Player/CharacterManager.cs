@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// ½Ì±ÛÅæ ÆĞÅÏ
+// ì‹±ê¸€í†¤ íŒ¨í„´
 public class CharacterManager : MonoBehaviour
 {
     private static CharacterManager _instance;
@@ -12,15 +12,15 @@ public class CharacterManager : MonoBehaviour
         {
             if (_instance == null)
             {
-                // ÇÒ´çµÇÁö ¾Ê¾ÒÀ» ¶§, ¿ÜºÎ¿¡¼­ CharacterManager.Instance ·Î Á¢±ÙÇÏ´Â °æ¿ì
-                // °ÔÀÓ ¿ÀºêÁ§Æ®¸¦ ¸¸µé¾îÁÖ°í CharacterManager ½ºÅ©¸³Æ®¸¦ AddComponent
+                // í• ë‹¹ë˜ì§€ ì•Šì•˜ì„ ë•Œ, ì™¸ë¶€ì—ì„œ CharacterManager.Instance ë¡œ ì ‘ê·¼í•˜ëŠ” ê²½ìš°
+                // ê²Œì„ ì˜¤ë¸Œì íŠ¸ë¥¼ ë§Œë“¤ì–´ì£¼ê³  CharacterManager ìŠ¤í¬ë¦½íŠ¸ë¥¼ AddComponent
                 _instance = new GameObject("CharacerManager").AddComponent<CharacterManager>();
             }
             return _instance;
         }
     }
 
-    // ³ªÁß¿¡ ¼öÁ¤µÉ °æ¿ì¸¦ °í·ÁÇÏ¿© ¿øº»(_player)°ú Á¢±Ù(Player)À» ±¸º°
+    // ë‚˜ì¤‘ì— ìˆ˜ì •ë  ê²½ìš°ë¥¼ ê³ ë ¤í•˜ì—¬ ì›ë³¸(_player)ê³¼ ì ‘ê·¼(Player)ì„ êµ¬ë³„
     public Player Player
     {
         get { return _player; }

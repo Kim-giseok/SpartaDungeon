@@ -8,7 +8,7 @@ public class JumpFlatform : MonoBehaviour, IInteractable
 
     public string GetInteractPrompt()
     {
-        return "Á¡ÇÁ´ë\n¹âÀ¸¸é À§·Î ¶Ù¾î¿À¸¨´Ï´Ù.";
+        return "ì í”„ëŒ€\në°Ÿìœ¼ë©´ ìœ„ë¡œ ë›°ì–´ì˜¤ë¦…ë‹ˆë‹¤.";
     }
 
     public void OnInteract()
