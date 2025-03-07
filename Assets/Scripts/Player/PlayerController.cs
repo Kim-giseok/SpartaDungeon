@@ -206,6 +206,8 @@ public class PlayerController : MonoBehaviour
     public void OnItemUseInput(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Started)
-            selectItem(0);
+        {
+            selectItem(int.Parse(context.control.displayName) - 1);
+        }
     }
 }
