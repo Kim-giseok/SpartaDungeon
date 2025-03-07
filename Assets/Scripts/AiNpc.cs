@@ -9,13 +9,16 @@ public class AiNpc : MonoBehaviour
     NavMeshSurface surface;
     NavMeshAgent agent;
 
-    Vector3 destination;
+    public float speed;
+
+    public  Vector3 destination;
 
     // Start is called before the first frame update
     void Start()
     {
         surface = GetComponent<NavMeshSurface>();
         agent = GetComponent<NavMeshAgent>();
+        agent.speed = speed;
     }
 
     // Update is called once per frame
