@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public bool canLook = true;
 
+    public Action<int> selectItem;
+
     Rigidbody rigi;
 
     private void Awake()
@@ -199,5 +201,11 @@ public class PlayerController : MonoBehaviour
         Ray ray = new Ray(transform.position + transform.up * 0f, transform.forward);
 
         return !IsGrounded() && Physics.Raycast(ray, 0.3f, groundLayerMask);
+    }
+
+    public void OnItemUseInput(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+            selectItem(0);
     }
 }

@@ -25,6 +25,7 @@ public class UIInventory : MonoBehaviour
 
         // Action 호출 시 필요한 함수 등록
         CharacterManager.Instance.Player.addItem += AddItem;  // 아이템 파밍 시
+        controller.selectItem = SelectItem;
 
         // Inventory UI 초기화 로직들
         slots = new ItemSlot[slotPanel.childCount];
@@ -32,7 +33,7 @@ public class UIInventory : MonoBehaviour
         for (int i = 0; i < slots.Length; i++)
         {
             slots[i] = slotPanel.GetChild(i).GetComponent<ItemSlot>();
-            slots[i].Index = i;
+            slots[i].Index = i + 1;
             slots[i].inventory = this;
             slots[i].Clear();
         }
@@ -121,5 +122,39 @@ public class UIInventory : MonoBehaviour
     public void ThrowItem(ItemData data)
     {
         Instantiate(data.dropPrefab, dropPosition.position, dropPosition.rotation);
+    }
+
+    public void SelectItem(int index)
+    {
+        if (slots[index].item == null) return;
+
+        selectedItem = slots[index].item;
+        selectedItemIndex = index;
+
+        switch (selectedItem.type)
+        {
+            case ItemType.CONSUMABLE:
+                condition.ApplyBuf(selectedItem);
+                RemoveSelctedItem();
+                break;
+        }
+    }
+
+    void RemoveSelctedItem()
+    {
+        slots[selectedItemIndex].quantity--;
+
+        if (slots[selectedItemIndex].quantity <= 0)
+        {
+            if (slots[selectedItemIndex].equipped)
+            {
+                //UnEquip(selectedItemIndex);
+            }
+
+            selectedItem = null;
+            slots[selectedItemIndex].item = null;
+            selectedItemIndex = -1;
+        }
+        UpdateUI();
     }
 }
