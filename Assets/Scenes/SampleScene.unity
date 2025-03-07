@@ -1037,10 +1037,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startP: {fileID: 1012305507}
   senceDistance: 4
-  playerL:
-    serializedVersion: 2
-    m_Bits: 64
-  atk: 5
+  atk: 10
   attackDelay: 2
 --- !u!65 &659341435
 BoxCollider:

@@ -60,6 +60,7 @@ public class PlayerCondition : MonoBehaviour, IDamagable
     public void TakePhysicalDamage(int damageAmount)
     {
         if (invincible > 0) return;
+        Debug.Log("공격당함");
         health.Subtract(damageAmount);
         onTakeDamage?.Invoke();
     }

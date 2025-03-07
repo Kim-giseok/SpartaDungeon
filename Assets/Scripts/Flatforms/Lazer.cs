@@ -8,14 +8,13 @@ public class Lazer : MonoBehaviour, IInteractable
     public Transform startP;
     public float senceDistance;
 
-    public LayerMask playerL;
     bool activate = true;
 
     Ray ray = new();
     RaycastHit hit;
 
     [Header("Attack info")]
-    public float atk;
+    public int atk;
     public float attackDelay;
     float lastAttackTime;
 
@@ -25,12 +24,14 @@ public class Lazer : MonoBehaviour, IInteractable
         ray.origin = startP.position;
         ray.direction = transform.forward;
 
-        if (Physics.Raycast(ray, out hit, senceDistance, playerL) && activate)
+        if (Physics.Raycast(ray, out hit, senceDistance) && activate)
         {
+            if (!hit.collider.gameObject.TryGetComponent<IDamagable>(out var target)) return;
+
             if (Time.time - lastAttackTime >= attackDelay)
             {
                 lastAttackTime = Time.time;
-                Debug.Log("공격당함");
+                target.TakePhysicalDamage(atk);
             }
         }
         else
