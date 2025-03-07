@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 4720490140206363198}
   - component: {fileID: 7698418128246174374}
   m_Layer: 0
-  m_Name: IndexNum
+  m_Name: IndexTxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -450,3 +450,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21b0ececef9a0114cbfd62046d7ffb85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  item: {fileID: 0}
+  inventory: {fileID: 0}
+  icon: {fileID: 168184868567168799}
+  quatityText: {fileID: 960022156027761989}
+  IndexText: {fileID: 7698418128246174374}
+  equipped: 0
+  quantity: 0
