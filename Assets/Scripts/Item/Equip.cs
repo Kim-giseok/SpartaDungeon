@@ -17,6 +17,9 @@ public class Equip : MonoBehaviour
             case BufType.SPEED:
                 buf = condition.ChangeSpeed;
                 break;
+            case BufType.JUMPPOWER:
+                buf = condition.ChangeJumpPower;
+                break;
         }
 
         buf?.Invoke(amount);
