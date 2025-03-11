@@ -23,12 +23,16 @@ public class AiNpc : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        surface.BuildNavMesh();
+        surface.BuildNavMesh();//매 프레임마다 맵을 새로 굽습니다.
         agent.SetDestination(destination);
         if (Vector3.Distance(transform.position, destination) < 1)
             destination = NextDestination();
     }
 
+    /// <summary>
+    /// NavMesh내의 무작위 좌표를 반환합니다.
+    /// </summary>
+    /// <returns></returns>
     Vector3 NextDestination()
     {
         NavMeshHit hit;

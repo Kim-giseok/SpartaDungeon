@@ -203,6 +203,10 @@ public class PlayerController : MonoBehaviour
         return !IsGrounded() && Physics.Raycast(ray, 0.3f, groundLayerMask);
     }
 
+    /// <summary>
+    /// 입려한 키에 해당하는 슬롯에 있는 아이템을 사용합니다.
+    /// </summary>
+    /// <param name="context"></param>
     public void OnItemUseInput(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Started)

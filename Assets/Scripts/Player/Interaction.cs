@@ -68,6 +68,7 @@ public class Interaction : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Started && curInteractable != null)
         {
+            //아이템을 획득할 수 없다면 제자리에 다시 놓아두기 위해 아이템의 위치와 회전값을 기억해둡니다.
             Vector3 originP = dropPosition.position;
             Quaternion originR = dropPosition.rotation;
             dropPosition.SetPositionAndRotation(curInteractGameObject.transform.position, curInteractGameObject.transform.rotation);

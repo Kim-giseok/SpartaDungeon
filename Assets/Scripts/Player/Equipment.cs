@@ -18,6 +18,10 @@ public class Equipment : MonoBehaviour
         condition = CharacterManager.Instance.Player.condition;
     }
 
+    /// <summary>
+    /// 장비를 장착하고 그 능력치를 얻습니다.
+    /// </summary>
+    /// <param name="data"></param>
     public void EquipNew(ItemData data)
     {
         UnEquip();
@@ -25,6 +29,9 @@ public class Equipment : MonoBehaviour
         curEquip.ApplyEBuf(condition);
     }
 
+    /// <summary>
+    /// 장비를 장착해제하고 그 능력치를 잃습니다.
+    /// </summary>
     public void UnEquip()
     {
         if (curEquip != null)
