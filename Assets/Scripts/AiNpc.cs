@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 public class AiNpc : MonoBehaviour
 {
-    NavMeshSurface surface;
+    public NavMeshSurface surface;
     NavMeshAgent agent;
 
     public float speed;
@@ -16,7 +16,6 @@ public class AiNpc : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        surface = GetComponent<NavMeshSurface>();
         agent = GetComponent<NavMeshAgent>();
         agent.speed = speed;
     }
@@ -26,5 +25,15 @@ public class AiNpc : MonoBehaviour
     {
         surface.BuildNavMesh();
         agent.SetDestination(destination);
+        if (Vector3.Distance(transform.position, destination) < 1)
+            destination = NextDestination();
+    }
+
+    Vector3 NextDestination()
+    {
+        NavMeshHit hit;
+        NavMesh.SamplePosition(Random.onUnitSphere * Random.Range(0, 40), out hit, 40, NavMesh.AllAreas);
+
+        return hit.position;
     }
 }
