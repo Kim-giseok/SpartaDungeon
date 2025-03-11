@@ -20,7 +20,9 @@ public class Lazer : MonoBehaviour, IInteractable
 
     void Update()
     {
+#if UNITY_EDITOR
         Debug.DrawRay(startP.position, transform.forward * senceDistance, Color.red);
+#endif
         ray.origin = startP.position;
         ray.direction = transform.forward;
 
@@ -43,6 +45,9 @@ public class Lazer : MonoBehaviour, IInteractable
         return "레이저 장치\n" + (activate ? "정면에 서면 데미지를 입습니다. [E]키로 작동정지" : "작동하지 않고 있습니다. [E]키로 작동");
     }
 
+    /// <summary>
+    /// 상호작용으로 레이저를 켜고 끌 수 있습니다.
+    /// </summary>
     public void OnInteract()
     {
         activate = !activate;

@@ -50,7 +50,9 @@ public class PlayerCondition : MonoBehaviour, IDamagable
 
     public void Die()
     {
+#if UNITY_EDITOR
         Debug.Log("플레이어가 죽었다.");
+#endif
     }
 
     /// <summary>
@@ -60,7 +62,9 @@ public class PlayerCondition : MonoBehaviour, IDamagable
     public void TakePhysicalDamage(int damageAmount)
     {
         if (invincible > 0) return;
+#if UNITY_EDITOR
         Debug.Log("공격당함");
+#endif
         health.Subtract(damageAmount);
         onTakeDamage?.Invoke();
     }
@@ -74,16 +78,28 @@ public class PlayerCondition : MonoBehaviour, IDamagable
         CharacterManager.Instance.Player.controller.moveSpeed += speedAmount;
     }
 
+    /// <summary>
+    /// 더블점프 가능 횟수를 변경합니다.
+    /// </summary>
+    /// <param name="djumpCount">증감할 수치입니다.</param>
     public void ChangeDJumpCount(float djumpCount)
     {
         dJumpCount += (int)djumpCount;
     }
 
+    /// <summary>
+    /// 무적상태를 변경합니다. invincible이 양수면 무적상태입니다.
+    /// </summary>
+    /// <param name="invin"></param>
     public void ChangeInvincible(float invin)
     {
         invincible += (int)invin;
     }
 
+    /// <summary>
+    /// 점프력을 변경합니다.
+    /// </summary>
+    /// <param name="amount"></param>
     public void ChangeJumpPower(float amount)
     {
         CharacterManager.Instance.Player.controller.jumpPower += amount;

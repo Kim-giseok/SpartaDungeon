@@ -11,24 +11,32 @@ public class AiNpc : MonoBehaviour
 
     public float speed;
 
-    public  Vector3 destination;
+    public Vector3 destination;
 
     // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         agent.speed = speed;
+        surface.BuildNavMesh();//매 프레임마다 맵을 새로 굽습니다.
+        agent.SetDestination(destination);
     }
 
     // Update is called once per frame
     void Update()
     {
-        surface.BuildNavMesh();
-        agent.SetDestination(destination);
-        if (Vector3.Distance(transform.position, destination) < 1)
+        surface.BuildNavMesh();//매 프레임마다 맵을 새로 굽습니다.
+        if (Vector3.Distance(transform.position, destination) < 1 || agent.velocity.magnitude < 0.1f)
+        {
             destination = NextDestination();
+            agent.SetDestination(destination);
+        }
     }
 
+    /// <summary>
+    /// NavMesh내의 무작위 좌표를 반환합니다.
+    /// </summary>
+    /// <returns></returns>
     Vector3 NextDestination()
     {
         NavMeshHit hit;

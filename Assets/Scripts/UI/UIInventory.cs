@@ -40,6 +40,9 @@ public class UIInventory : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 상호작용한 아이템을 슬롯에 추가합니다.
+    /// </summary>
     public void AddItem()
     {
         //ItemObject 로직에서 Player에 넘겨준 정보를 가지고 옴
@@ -76,7 +79,9 @@ public class UIInventory : MonoBehaviour
         CharacterManager.Instance.Player.itemData = null;
     }
 
-    // UI 정보 새로고침
+    /// <summary>
+    /// UI 정보 새로고침
+    /// </summary>
     public void UpdateUI()
     {
         for (int i = 0; i < slots.Length; i++)
@@ -93,7 +98,11 @@ public class UIInventory : MonoBehaviour
         }
     }
 
-    // 여러개 가질 수 있는 아이템의 정보 찾아서 return
+    /// <summary>
+    /// 여러개 가질 수 있는 아이템의 정보 찾아서 return
+    /// </summary>
+    /// <param name="data"></param>
+    /// <returns>아이템을 넣을 슬롯입니다.</returns>
     ItemSlot GetItemStack(ItemData data)
     {
         for (int i = 0; i < slots.Length; i++)
@@ -106,7 +115,10 @@ public class UIInventory : MonoBehaviour
         return null;
     }
 
-    // 슬롯의 item 정보가 비어있는 정보 return
+    /// <summary>
+    /// 슬롯의 item 정보가 비어있는 정보 return
+    /// </summary>
+    /// <returns>아이템을 넣을 슬롯입니다.</returns>
     ItemSlot GetEmptySlot()
     {
         for (int i = 0; i < slots.Length; i++)
@@ -119,12 +131,19 @@ public class UIInventory : MonoBehaviour
         return null;
     }
 
-    // 아이템 버리기 (실제론 매개변수로 들어온 데이터에 해당하는 아이템 생성)
+    /// <summary>
+    /// 아이템 버리기 (실제론 매개변수로 들어온 데이터에 해당하는 아이템 생성)
+    /// </summary>
+    /// <param name="data"></param>
     public void ThrowItem(ItemData data)
     {
         Instantiate(data.dropPrefab, dropPosition.position, dropPosition.rotation);
     }
 
+    /// <summary>
+    /// 선택한 슬롯에 있는 아이템을 사용합니다.
+    /// </summary>
+    /// <param name="index"></param>
     public void SelectItem(int index)
     {
         if (slots[index].item == null) return;
@@ -144,6 +163,9 @@ public class UIInventory : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 선택된 슬롯의 아이템을 하나 줄입니다. 갯수가 0이 되면 슬롯을 비웁니다.
+    /// </summary>
     void RemoveSelctedItem()
     {
         slots[selectedItemIndex].quantity--;
@@ -162,6 +184,9 @@ public class UIInventory : MonoBehaviour
         UpdateUI();
     }
 
+    /// <summary>
+    /// 선택된 아이템을 장착/장착해제합니다.
+    /// </summary>
     void Equip()
     {
         //이미 장착중인 장비라면 장착해제
